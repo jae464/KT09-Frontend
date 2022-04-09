@@ -14,6 +14,8 @@
 			rel="stylesheet"
 		/>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="setUser.js"></script>
+		<script src="apis.js"></script>
 		<style>
 			.navbar {
 				height: 6rem;
@@ -120,6 +122,7 @@
 		</style>
 	</head>
 	<body>
+		<!-- 헤더 -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">KT-BOX</a>
@@ -153,8 +156,10 @@
 					/>
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form>
+				<div class="myinfo">내정보:</div>
 			</div>
 		</nav>
+		<!-- 질문 폼 -->
 		<form class="form-container">
 			<input class="title" placeholder="질문을 입력하세요." />
 			<div class="category">
@@ -173,13 +178,13 @@
 					class="anonymous-check"
 					type="radio"
 					name="chk_info"
-					value="yes"
+					value="true"
 				/><span style="margin-left: 1rem">예</span>
 				<input
 					class="anonymous-check"
 					type="radio"
 					name="chk_info"
-					value="no"
+					value="false"
 					checked
 				/><span style="margin-left: 1rem">아니오</span>
 			</div>
@@ -191,16 +196,14 @@
 		<script src="category.js"></script>
 		<script>
 			$(function () {
+				var user = getUser(userId);
+				$('.myinfo').html(`내정보 : ${user.nickname}`);
 				// 게시하기 버튼 클릭
 				$('.submit').on('click', function (e) {
 					e.preventDefault();
 					var title = $('.title').val(); // 1. 제목
 					// 2. 카테고리
-					var category = {
-						first_depth: $('select[depth="1"]').val(),
-						second_depth: $('select[depth="2"]').val(),
-						third_depth: $('select[depth="3"]').val(),
-					};
+					var category = $('select[depth="2"]').val();
 					console.log(category);
 					var hashtags = $('.tag') // 3. 해시태그
 						.val()
@@ -208,40 +211,38 @@
 
 					// 4. 내용
 					var content = $('.content').val();
-					// console.log('게시 테스트');
-					// console.log(title, hashtags, content);
-
+					console.log(content);
 					// 5. 익명 여부
 					var anonymous = $('.anonymous-check:checked').val();
 
+					// 6. 날짜 저장
+					var date = new Date();
 					if (!title || !content) {
 						alert('내용을 입력해주세요.');
 					} else {
 						var data = {
+							userId: user.id,
 							title,
 							category,
 							content,
-							anonymous,
+							anonymous: anonymous === 'true' ? true : false,
+							createdAt:
+								date.getFullYear() +
+								'년 ' +
+								(date.getMonth() + 1) +
+								'월 ' +
+								date.getDate() +
+								'일',
+							nickname: user.nickname,
+							like: 0,
+							solved: false,
 							// hashtags: [...hashtags],
 						};
 						if (hashtags) {
 							data['hashtags'] = [...hashtags];
 						}
-						console.log(data);
-						$.ajax({
-							type: 'post',
-							url: 'http://localhost:3000/posts',
-							contentType: 'application/json',
-							traditional: true,
-							data: JSON.stringify(data),
-							async: false,
-							success: function (data) {
-								console.log('업로드 성공');
-								console.log(data);
-								// alert('업로드 성공');
-							},
-						});
-						// window.location.href = 'index.html';
+						addPost(data);
+						window.location.href = 'index.html';
 					}
 				});
 
@@ -253,7 +254,9 @@
 													</select>`;
 					var selectTag = $(selectBox);
 					arr.forEach((category) => {
-						var optionTag = $(`<option value=${category}>${category}</option>`);
+						var optionTag = $(
+							`<option value="${category}">${category}</option>`
+						);
 						selectTag.append(optionTag);
 					});
 					$('.category-select').append(selectTag);
