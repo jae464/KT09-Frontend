@@ -17,6 +17,10 @@
 		<script src="apis.js"></script>
 		<title>Document</title>
 		<style>
+			body {
+				background-color: rgb(233, 236, 239);
+				border: 1px solid #e5e5e5;
+			}
 			.navbar {
 				height: 6rem;
 			}
@@ -24,20 +28,103 @@
 			.navbar-brand {
 				font-size: 2rem;
 			}
+			.top-box {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.solved-text {
+				color: green;
+				font-weight: bold;
+			}
+			.category {
+				margin-top: 0.3rem;
+				text-align: center;
+			}
+			.delete-btn {
+				border: none;
+				border-radius: 4px;
+				background-color: #6cacf2;
+				color: white;
+			}
 			.contents {
-				width: 40rem;
+				width: 50rem;
+				padding: 1rem;
+				background-color: white;
 				margin: 4rem auto;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
-				border: 1px solid black;
+				border: none;
+				border-radius: 1rem;
+			}
+			.like-box {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
 			}
 			.title {
+				display: flex;
 				font-weight: bold;
 				font-size: 2.5rem;
 			}
 			.comment {
-				border: 1px solid black;
+				border: 1px solid #e5e5e5;
+				padding: 1rem;
+			}
+			.like-btn {
+				border: none;
+				border-radius: 4px;
+				background-color: #6cacf2;
+				color: white;
+			}
+			.content {
+				font-size: 1.2rem;
+			}
+			.hashtag {
+				margin-right: 1rem;
+				color: #3867e8;
+				cursor: pointer;
+			}
+			.post-info {
+				font-size: 1rem;
+				margin: 1rem 0;
+				color: gray;
+			}
+			.nickname {
+				margin-right: 1rem;
+			}
+			.answer-btn {
+				width: 6rem;
+				height: 3rem;
+				border: none;
+				margin-bottom: 1rem;
+				background-color: #6cacf2;
+				color: white;
+				border-radius: 4px;
+			}
+			.solve-btn {
+				width: 6rem;
+				height: 3rem;
+				border: none;
+				margin-bottom: 1rem;
+				background-color: #6cacf2;
+				color: white;
+				border-radius: 4px;
+			}
+			.answer {
+				height: 20rem;
+				border: 1px solid #e5e5e5;
+				resize: none;
+			}
+			.answer-submit {
+				width: 6rem;
+				height: 3rem;
+				border: none;
+				margin-bottom: 1rem;
+				background-color: #6cacf2;
+				color: white;
+				border-radius: 4px;
 			}
 		</style>
 		<!-- 정적 페이지에서 주소창으로 paraemter 넘겨받는 법 -->
@@ -109,23 +196,33 @@
 		<!-- 내용 -->
 		<div class="container-md">
 			<div class="contents">
-				<button class="delete-btn">삭제</button>
-				<p class="category"></p>
+				<div class="top-box">
+					<p class="category"></p>
+					<button class="delete-btn">삭제</button>
+				</div>
+				<p class="solved"></p>
 				<h1 class="title"></h1>
-				<p class="like"></p>
-				<button class="like-btn">좋아요</button>
-				<div class="hashtags"></div>
+				<div class="like-box">
+					<p class="like"></p>
+					<button class="like-btn">좋아요</button>
+				</div>
+				<hr />
+
 				<p class="content"></p>
+
+				<div class="hashtags"></div>
 				<div class="post-info"></div>
-				<button class="answer-btn">답변달기</button>
+				<hr />
+				<button class="answer-btn">답변하기</button>
+				<button class="solve-btn">해결완료</button>
 				<div class="answer-form">
-					<span style="font-weight: bold">익명 여부</span>
+					<span style="font-weight: bold; margin-right: 1rem">익명 여부</span>
 					<input
 						class="anonymous-check"
 						type="radio"
 						name="chk_info"
 						value="true"
-					/><span style="margin-left: 1rem">예</span>
+					/><span style="margin-left: 1rem; margin-right: 1rem">예</span>
 					<input
 						class="anonymous-check"
 						type="radio"
@@ -133,9 +230,12 @@
 						value="false"
 						checked
 					/><span style="margin-left: 1rem">아니오</span>
+
+					<br />
 					<textarea class="answer" style="width: 100%"></textarea>
 					<button class="answer-submit">답변 등록</button>
 				</div>
+				<hr />
 				<div class="comments"></div>
 			</div>
 		</div>
@@ -152,30 +252,44 @@
 				user.id === post.userId && !comments.length
 					? null
 					: $('.delete-btn').hide(); // 작성자이고 댓글 없으면 삭제 버튼 나타남
+				user.id === post.userId && !post.solved ? null : $('.solve-btn').hide(); // 해결완료 버튼
+				post.solved
+					? $('.solved').append(`<span class="solved-text">해결완료</span>`)
+					: $('.solved').append(`<span class="solved-text">미해결 질문</span>`);
 				$('.like-btn').on('click', function () {
 					addLike(postId, post.like + 1);
 				});
 
 				$('.answer-form').hide();
-				$('.answer-btn').on('click', function () {
-					console.log('클릭');
-					$('.answer-form').toggle();
-				});
-				$('.category').html(post.category);
-				$('.title').html(post.title);
+
+				$('.category').html(`카테고리 > ${post.category}`);
+				// $('.title').html(`Q. ${post.title}`);
+				$('.title').append(`<span style="margin-right:1rem;">Q</span>`);
+				$('.title').append($(`<h1>${post.title}<h1/>`));
 				$('.like').html(`좋아요 : ${post.like}`);
 
 				$('.content').html(post.content);
 				$('.post-info').append(
-					$(`<span>작성자 : ${post.anonymous ? '익명' : post.nickname}</span>`)
+					$(
+						`<span class="nickname">${
+							post.anonymous ? '익명' : post.nickname
+						}</span>`
+					)
 				);
-				$('.post-info').append($(`<span> 날짜 : ${post.createdAt}</span>`));
+				$('.post-info').append($(`<span>${post.createdAt}</span>`));
 				if (post.hashtags) {
 					post.hashtags.forEach((hashtag) => {
-						$('.hashtags').append($(`<span class="hashtag">${hashtag}</span>`));
+						$('.hashtags').append(
+							$(`<span class="hashtag" value="${hashtag}">${hashtag}</span>`)
+						);
 					});
 				}
 
+				// 이벤트 등록
+				$('.answer-btn').on('click', function () {
+					console.log('클릭');
+					$('.answer-form').toggle();
+				});
 				// 댓글 업로드
 				console.log(user);
 				$('.answer-submit').on('click', function (e) {
@@ -190,11 +304,10 @@
 						anonymous: anonymous === 'true' ? true : false,
 						createdAt:
 							date.getFullYear() +
-							'년 ' +
+							'.' +
 							(date.getMonth() + 1) +
-							'월 ' +
-							date.getDate() +
-							'일',
+							'.' +
+							date.getDate(),
 					};
 					postComment(data);
 				});
@@ -207,7 +320,6 @@
 							<p>${comment.anonymous ? '익명' : comment.nickname}</p>
 							<p>${comment.content}</p>
 							<p>${comment.createdAt}</p>
-							${user.id === post.userId ? '<button>채택</button>' : ''}
 						</div>`)
 					);
 				});
@@ -216,6 +328,20 @@
 				$('.delete-btn').on('click', function () {
 					deletePost(postId);
 					window.location.href = 'index.html';
+				});
+
+				// 해결완료 버튼
+				$('.solve-btn').on('click', function () {
+					addSolved(postId);
+					window.location.href = `post.html?postId=${postId}`;
+				});
+
+				// 해시태그 이벤트 등록
+				$('.hashtag').on('click', function () {
+					// console.log(this.getAttribute('value'));
+					var word = this.getAttribute('value').slice(1);
+					console.log(word);
+					window.location.href = `search.html?type=hashtag&word=${word}`;
 				});
 			});
 		</script>

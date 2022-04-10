@@ -140,3 +140,43 @@ function addLike(postId, like) {
 		},
 	});
 }
+
+// 해결 완료로 바꾸기
+function addSolved(postId) {
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/posts/${postId}`,
+		contentType: 'application/json',
+		data: JSON.stringify({ solved: true }),
+		async: false,
+		success: function (data) {
+			console.log('해결 완료 업데이트 성공');
+		},
+		error: function () {
+			alert('해결 완료 업데이트 실패');
+		},
+	});
+}
+
+// 해쉬태그 검색
+function searchByHashtag(hashtag) {
+	var posts = getAllPosts();
+	var result;
+
+	result = posts.filter((post) => {
+		return post.hashtags.includes('#' + hashtag);
+	});
+	console.log(result);
+	return result;
+}
+
+// 일반 검색
+function searchByWord(word) {
+	var posts = getAllPosts();
+	var result;
+	result = posts.filter((post) => {
+		return post.title.includes(word) || post.content.includes(word);
+	});
+	console.log(result);
+	return result;
+}

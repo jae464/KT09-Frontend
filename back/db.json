@@ -24,9 +24,9 @@
       "category": "회사생활",
       "content": "아이폰\n화면\n캡쳐 방지 개선",
       "anonymous": false,
-      "createdAt": "2022년 4월 10일",
+      "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 0,
+      "like": 14,
       "solved": false,
       "hashtags": [
         "#아이폰",
@@ -40,9 +40,9 @@
       "category": "회사생활",
       "content": "제안서\n작성\n내용",
       "anonymous": false,
-      "createdAt": "2022년 4월 10일",
+      "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 0,
+      "like": 10,
       "solved": false,
       "hashtags": [
         "#제안서",
@@ -56,10 +56,10 @@
       "category": "Custom 부문",
       "content": "커\n스\n텀\n관련 질문",
       "anonymous": true,
-      "createdAt": "2022년 4월 10일",
+      "createdAt": "2022.4.10",
       "nickname": "이민재",
       "like": 0,
-      "solved": false,
+      "solved": true,
       "hashtags": [
         "#커스텀",
         "#관련"
@@ -72,10 +72,10 @@
       "category": "Custom 부문",
       "content": "ㅁㄴㅇㄹㄴㅁㅇㅁㄴㅇ",
       "anonymous": false,
-      "createdAt": "2022년 4월 10일",
+      "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 0,
-      "solved": false,
+      "like": 6,
+      "solved": true,
       "hashtags": [
         "#질문",
         "#입니다"
@@ -83,5 +83,42 @@
       "id": 4
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "userId": 1,
+      "postId": 1,
+      "content": "asdasd",
+      "nickname": "김보원",
+      "anonymous": false,
+      "createdAt": "2022.4.10",
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "postId": 1,
+      "content": "ㅇㅁㄴㅇㅁㅇㅁ",
+      "nickname": "김보원",
+      "anonymous": true,
+      "createdAt": "2022.4.10",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "postId": 2,
+      "content": "저도 잘 모르겠습니다.",
+      "nickname": "김보원",
+      "anonymous": false,
+      "createdAt": "2022.4.10",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "postId": 4,
+      "content": "익명 답변입니다!",
+      "nickname": "김보원",
+      "anonymous": true,
+      "createdAt": "2022.4.11",
+      "id": 4
+    }
+  ]
 }

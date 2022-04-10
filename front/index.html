@@ -71,18 +71,21 @@
 				</div>
 				<form class="d-flex">
 					<input
-						class="form-control me-2"
+						class="form-control me-2 search"
 						type="search"
 						placeholder="Search"
 						aria-label="Search"
 					/>
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<button class="btn btn-outline-success search-btn" type="submit">
+						Search
+					</button>
 				</form>
 				<div class="myinfo">내정보:</div>
 			</div>
 		</nav>
 		<!-- 내용 -->
 		<button class="question">질문하기</button>
+		<a href="answer.html">답변하기</a>
 		<!-- <div class="card-list"></div> -->
 		<div class="row px-5 py-5">
 			<div class="col" style="background-color: antiquewhite">
@@ -198,6 +201,16 @@
 						window.location.href = `post.html?postId=${postId}`;
 					});
 				}
+
+				// search 버튼 클릭
+				$('.search-btn').on('click', function (e) {
+					e.preventDefault();
+					var hashtag = $('.search').val();
+					console.log($('.search').val());
+					console.log(hashtag);
+					searchByHashtag(hashtag);
+					window.location.href = `search.html?type=hashtag&word=${hashtag}`;
+				});
 			});
 		</script>
 	</body>
