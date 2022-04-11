@@ -180,3 +180,60 @@ function searchByWord(word) {
 	console.log(result);
 	return result;
 }
+
+// 특정 유저 게시글 불러오기
+function getUserPost(userId) {
+	var result;
+	$.ajax({
+		type: 'get',
+		url: `http://localhost:3000/posts?userId=${userId}`,
+		contentType: 'application/json',
+		async: false,
+		success: function (data) {
+			result = data;
+			console.log('post:', result);
+		},
+		error: function () {
+			alert('실패');
+		},
+	});
+	return result;
+}
+
+// 특정 유저 댓글 불러오기
+function getUserComment(userId) {
+	var result;
+	$.ajax({
+		type: 'get',
+		url: `http://localhost:3000/comments?userId=${userId}`,
+		contentType: 'application/json',
+		async: false,
+		success: function (data) {
+			result = data;
+			console.log('comments:', result);
+		},
+		error: function () {
+			alert('실패');
+		},
+	});
+	return result;
+}
+
+// 해쉬태그 추가
+function addHashtag(userId, hashtag) {
+	var user = getUser(userId);
+	var hashtags = [...user.hashtags, '#' + hashtag];
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/users/${userId}`,
+		contentType: 'application/json',
+		data: JSON.stringify({ hashtags: hashtags }),
+		async: false,
+		success: function (data) {
+			console.log('해쉬태그 업데이트 성공');
+		},
+		error: function () {
+			alert('해쉬태그 업데이트 실패');
+		},
+	});
+}

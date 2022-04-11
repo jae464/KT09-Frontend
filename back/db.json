@@ -2,18 +2,27 @@
   "users": [
     {
       "nickname": "김보원",
+      "hashtags": [
+        "#아이폰",
+        "#김보원"
+      ],
+      "image": "1.jpg",
       "id": 1
     },
     {
       "nickname": "김수연",
+      "hashtags": [],
       "id": 2
     },
     {
       "nickname": "박찬영",
+      "hashtags": [],
+      "image": "3.jpg",
       "id": 3
     },
     {
       "nickname": "이민재",
+      "hashtags": [],
       "id": 4
     }
   ],
@@ -26,7 +35,7 @@
       "anonymous": false,
       "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 14,
+      "like": 15,
       "solved": false,
       "hashtags": [
         "#아이폰",
@@ -81,6 +90,21 @@
         "#입니다"
       ],
       "id": 4
+    },
+    {
+      "userId": 1,
+      "title": "홍보실 질문 입니다.",
+      "category": "홍보실",
+      "content": "홍보 질문입니다.",
+      "anonymous": false,
+      "createdAt": "2022.4.11",
+      "nickname": "김보원",
+      "like": 0,
+      "solved": false,
+      "hashtags": [
+        "#홍보"
+      ],
+      "id": 5
     }
   ],
   "comments": [
