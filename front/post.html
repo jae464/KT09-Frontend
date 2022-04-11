@@ -17,6 +17,11 @@
 		<script src="apis.js"></script>
 		<title>Document</title>
 		<style>
+			.profile-image {
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+			}
 			body {
 				background-color: rgb(233, 236, 239);
 				border: 1px solid #e5e5e5;
@@ -61,7 +66,8 @@
 			.like-box {
 				display: flex;
 				align-items: center;
-				justify-content: space-between;
+				text-align: center;
+				/* justify-content: space-between; */
 			}
 			.title {
 				display: flex;
@@ -74,9 +80,22 @@
 			}
 			.like-btn {
 				border: none;
-				border-radius: 4px;
+				/* border-radius: 4px;
 				background-color: #6cacf2;
-				color: white;
+				color: white; */
+				align-items: center;
+				padding-bottom: 1rem;
+				margin-left: 0.5rem;
+				cursor: pointer;
+			}
+			.report {
+				margin-left: 1rem;
+
+			}
+			.report-btn {
+				padding-bottom: 1rem;
+				margin-left: 0.5rem;
+				cursor: pointer;
 			}
 			.content {
 				font-size: 1.2rem;
@@ -126,6 +145,37 @@
 				color: white;
 				border-radius: 4px;
 			}
+			.user-name {
+				font-weight: bold;
+				margin-left: 1rem;
+				font-size: 1.2rem;
+			}
+			.comment-date {
+				color: gray;
+				font-size: 0.8rem;
+			}
+			.comment-like {
+				float: right;
+				margin-left: 1rem;
+			}
+			.comment_like_btn{
+				float: right;
+				margin-left: 0.5rem;	
+			}
+			.comment-report {
+				float: right;
+				margin-left: 1rem;
+			}
+			.comment-delete {
+				float:right; 
+				cursor: pointer;
+				background-color: #6cacf2;
+				padding: 3px;
+				color: white;
+				border-radius: 4px;
+				font-size: 0.8rem;
+				text-align: center;
+			}
 		</style>
 		<!-- 정적 페이지에서 주소창으로 paraemter 넘겨받는 법 -->
 		<script type="text/javascript">
@@ -156,43 +206,48 @@
 
 	<body>
 		<!-- 헤더 -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">KT-BOX</a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">MyPage</a>
-						</li>
+				<form class="d-flex">
+					<input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success search-btn" type="submit">Search</button>
+				</form>
+				<img class="profile-image" src="" alt="" style="float:right;">
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						다른 계정
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+						<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+						<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+						<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
 					</ul>
 				</div>
-				<form class="d-flex">
-					<input
-						class="form-control me-2"
-						type="search"
-						placeholder="Search"
-						aria-label="Search"
-					/>
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-				<div class="myinfo">내정보:</div>
 			</div>
+			
 		</nav>
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Home</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="postform.html">질문하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="answer.html">답변하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="mypage.html">마이페이지</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
 		<!-- 내용 -->
 		<div class="container-md">
 			<div class="contents">
@@ -204,7 +259,9 @@
 				<h1 class="title"></h1>
 				<div class="like-box">
 					<p class="like"></p>
-					<button class="like-btn">좋아요</button>
+					<span class="like-btn">👍</span>
+					<p class="report"></p>
+					<span class="report-btn">😡</span>
 				</div>
 				<hr />
 
@@ -242,13 +299,17 @@
 
 		<script>
 			$(document).ready(function () {
-				var user = getUser(userId); // user
+				// 유저 정보
+				var user = getLoginUser();
+				console.log('user   :',user);
+				$('.profile-image').attr('src','images/'+user.image);
 				var post = getPost(postId); // post
 				var comments = getComments(postId); // comments
 				$('.myinfo').html(`내정보 : ${user.nickname}`);
 				post.content = post.content.replace(/\n/gi, '<br/>'); // 줄바꿈
 				user.id === post.userId ? $('.answer-btn').hide() : null; // 작성자면 답변 버튼 숨김
 				user.id === post.userId ? $('.like-btn').hide() : null; // 작성자면 좋아요 버튼 숨김
+				user.id === post.userId ? $('.report-btn').hide() : null;
 				user.id === post.userId && !comments.length
 					? null
 					: $('.delete-btn').hide(); // 작성자이고 댓글 없으면 삭제 버튼 나타남
@@ -256,9 +317,7 @@
 				post.solved
 					? $('.solved').append(`<span class="solved-text">해결완료</span>`)
 					: $('.solved').append(`<span class="solved-text">미해결 질문</span>`);
-				$('.like-btn').on('click', function () {
-					addLike(postId, post.like + 1);
-				});
+				
 
 				$('.answer-form').hide();
 
@@ -267,7 +326,7 @@
 				$('.title').append(`<span style="margin-right:1rem;">Q</span>`);
 				$('.title').append($(`<h1>${post.title}<h1/>`));
 				$('.like').html(`좋아요 : ${post.like}`);
-
+				$('.report').html(`신고횟수 : ${post.report}`)
 				$('.content').html(post.content);
 				$('.post-info').append(
 					$(
@@ -290,6 +349,14 @@
 					console.log('클릭');
 					$('.answer-form').toggle();
 				});
+				// 게시글 좋아요
+				$('.like-btn').on('click', function () {
+					addLike(postId, post.like + 1);
+				});
+				// 게시글 신고
+				$('.report-btn').on('click', function() {
+					addReport(postId, post.report + 1);
+				})
 				// 댓글 업로드
 				console.log(user);
 				$('.answer-submit').on('click', function (e) {
@@ -297,10 +364,12 @@
 					var comment_content = $('.answer').val();
 					var date = new Date();
 					var data = {
-						userId,
+						userId:user.id,
 						postId: parseInt(postId),
 						content: comment_content,
 						nickname: user.nickname,
+						like:0,
+						report: 0,
 						anonymous: anonymous === 'true' ? true : false,
 						createdAt:
 							date.getFullYear() +
@@ -314,14 +383,25 @@
 				// 댓글들 표시하기
 				comments.forEach((comment) => {
 					comment.content = comment.content.replace(/\n/gi, '<br/>');
-					$('.comments').append(
-						$(`
-						<div class="comment">
-							<p>${comment.anonymous ? '익명' : comment.nickname}</p>
-							<p>${comment.content}</p>
-							<p>${comment.createdAt}</p>
-						</div>`)
-					);
+					var comment_tag = $('<div class="comment"></div>');
+					var comment_user = getUser(comment.userId);
+					comment_tag.append(comment.anonymous ? `<img class="profile-image" src="images/anonymous.png"/>` 
+					: $(`<img class="profile-image" src="images/${comment_user.image}"/>`))
+					comment_tag.append(comment.anonymous ? $('<span class="user-name">익명</span>'): $(`<span class="user-name">${comment_user.nickname}</span>`))
+					
+					comment_tag.append(comment.userId === user.id 
+					? $(`<span class="comment-delete" comment-id=${comment.id}>삭제</span>`) 
+					: $(`<span class="comment-like-btn" comment-id="${comment.id}" style="float:right;cursor:pointer;margin-left:0.5rem">👍</span>`));
+					
+					comment_tag.append($(`<span class="comment-like" comment-id=${comment.id} value=${comment.like}>좋아요 : ${comment.like}</span>`))
+					comment_tag.append(comment.userId === user.id 
+					? null
+					: $(`<span class="comment-report-btn" comment-id="${comment.id}"style="float:right;cursor:pointer;margin-left:0.5rem">😡</span>`));
+					comment_tag.append($(`<span class="comment-report" comment-id=${comment.id} value=${comment.report}> 신고횟수 : ${comment.report}</span>`))
+
+					comment_tag.append($(`<p class="comment-content">${comment.content}</p>`));
+					comment_tag.append($(`<span class="comment-date">${comment.createdAt}</span>`))
+					$('.comments').append(comment_tag);
 				});
 
 				// 게시글 삭제
@@ -336,6 +416,11 @@
 					window.location.href = `post.html?postId=${postId}`;
 				});
 
+				// 댓글 삭제
+				$('.comment-delete').on('click',function(){
+					console.log(this.getAttribute('comment-id'));
+					deleteComment(this.getAttribute('comment-id'));
+				})
 				// 해시태그 이벤트 등록
 				$('.hashtag').on('click', function () {
 					// console.log(this.getAttribute('value'));
@@ -343,6 +428,43 @@
 					console.log(word);
 					window.location.href = `search.html?type=hashtag&word=${word}`;
 				});
+				// 댓글 좋아요
+				$('.comment-like-btn').on('click', function(){
+					var commentId = this.getAttribute('comment-id');
+					var commentLike = $(`.comment-like[comment-id=${commentId}]`);
+					commentLike = commentLike.attr('value');
+					console.log(commentLike)
+					addCommentLike(commentId, parseInt(commentLike) + 1);
+					// addCommentLike(this.getAttribute('comment-id'),$('.comment-like[comment-id=]'));
+				})
+				// 댓글 신고하기
+				$('.comment-report-btn').on('click', function(){
+					var commentId = this.getAttribute('comment-id');
+					var commentReport = $(`.comment-report[comment-id=${commentId}]`);
+					commentReport = commentReport.attr('value');
+					console.log(commentReport)
+					addCommentReport(commentId, parseInt(commentReport) + 1);
+					// addCommentLike(this.getAttribute('comment-id'),$('.comment-like[comment-id=]'));
+				})
+				
+				// HEADER FUNCTION
+
+				// search 버튼 클릭
+				$('.search-btn').on('click', function (e) {
+					e.preventDefault();
+					var hashtag = $('.search').val();
+					console.log($('.search').val());
+					console.log(hashtag);
+					searchByHashtag(hashtag);
+					window.location.href = `search.html?type=hashtag&word=${hashtag}`;
+				});
+
+				// 다른 계정 로그인
+				$('.login').on('click', function() {
+					// console.log(this.getAttribute('user-id'));
+					var new_user = this.getAttribute('user-id');
+					login(new_user);	
+				})
 			});
 		</script>
 	</body>

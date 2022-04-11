@@ -30,7 +30,11 @@
 			body {
 				background-color: rgb(233, 236, 239);
 			}
-
+			.profile-image {
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+			}
 			.part-box {
 				align-items: center;
 
@@ -88,42 +92,48 @@
 	</head>
 	<body>
 		<!-- 헤더 -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">KT-BOX</a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">MyPage</a>
-						</li>
+				<form class="d-flex">
+					<input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success search-btn" type="submit">Search</button>
+				</form>
+				<img class="profile-image" src="" alt="" style="float:right;">
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						다른 계정
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+						<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+						<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+						<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
 					</ul>
 				</div>
-				<form class="d-flex">
-					<input
-						class="form-control me-2"
-						type="search"
-						placeholder="Search"
-						aria-label="Search"
-					/>
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-				<div class="myinfo">내정보:</div>
 			</div>
+			
 		</nav>
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Home</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="postform.html">질문하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="answer.html">답변하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="mypage.html">마이페이지</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
 		<!-- 내용 -->
 		<div class="row" style="background-color: rgb(233, 236, 239)">
 			<div class="col">1</div>
@@ -158,6 +168,14 @@
 						class="answer-type"
 						type="radio"
 						name="chk_info"
+						value="solved"
+					/><span style="margin-left: 0.5rem; margin-right: 1rem"
+						>해결된 질문</span
+					>
+					<input
+						class="answer-type"
+						type="radio"
+						name="chk_info"
 						value="unsolved"
 					/><span style="margin-left: 0.5rem">미해결 질문</span>
 				</div>
@@ -180,6 +198,9 @@
 		<script>
 			$(function () {
 				var category = '전체';
+				// 유저 정보
+				var user = getLoginUser();
+				$('.profile-image').attr('src','images/'+user.image);
 				// 카테고리 추가
 				part_classification.forEach((category) => {
 					$('.part-contents').append(
@@ -218,6 +239,9 @@
 					type === 'all'
 						? $('.answer-type-text').html('모든 질문')
 						: $('.answer-type-text').html('답변을 기다리는 질문');
+					if (type === 'solved') {
+						$('.answer-type-text').html('해결이 완료된 질문');
+					}
 					setPosts(category, $(this).val());
 				});
 				// 함수
@@ -228,6 +252,10 @@
 					if (type === 'unsolved') {
 						posts = posts.filter((post) => {
 							return !post.solved;
+						});
+					} else if (type === 'solved') {
+						posts = posts.filter((post) => {
+							return post.solved;
 						});
 					}
 					// var unsolved_posts = posts.filter((post) => {
@@ -260,6 +288,24 @@
 						var postId = this.getAttribute('post-id');
 						window.location.href = `post.html?postId=${postId}`;
 					});
+					// HEADER FUNCTION
+
+				// search 버튼 클릭
+				$('.search-btn').on('click', function (e) {
+					e.preventDefault();
+					var hashtag = $('.search').val();
+					console.log($('.search').val());
+					console.log(hashtag);
+					searchByHashtag(hashtag);
+					window.location.href = `search.html?type=hashtag&word=${hashtag}`;
+				});
+
+				// 다른 계정 로그인
+				$('.login').on('click', function() {
+					// console.log(this.getAttribute('user-id'));
+					var new_user = this.getAttribute('user-id');
+					login(new_user);	
+				})
 				}
 			});
 		</script>

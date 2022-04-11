@@ -4,25 +4,32 @@
       "nickname": "김보원",
       "hashtags": [
         "#아이폰",
-        "#김보원"
+        "#김보원",
+        "#제안서"
       ],
       "image": "1.jpg",
+      "login": false,
       "id": 1
     },
     {
       "nickname": "김수연",
       "hashtags": [],
+      "image": "2.jpg",
+      "login": true,
       "id": 2
     },
     {
       "nickname": "박찬영",
       "hashtags": [],
       "image": "3.jpg",
+      "login": false,
       "id": 3
     },
     {
       "nickname": "이민재",
       "hashtags": [],
+      "image": "4.jpg",
+      "login": false,
       "id": 4
     }
   ],
@@ -35,8 +42,8 @@
       "anonymous": false,
       "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 15,
-      "solved": false,
+      "like": 16,
+      "solved": true,
       "hashtags": [
         "#아이폰",
         "#화면"
@@ -52,6 +59,7 @@
       "createdAt": "2022.4.10",
       "nickname": "이민재",
       "like": 10,
+      "report": 0,
       "solved": false,
       "hashtags": [
         "#제안서",
@@ -67,7 +75,8 @@
       "anonymous": true,
       "createdAt": "2022.4.10",
       "nickname": "이민재",
-      "like": 0,
+      "like": 2,
+      "report": 0,
       "solved": true,
       "hashtags": [
         "#커스텀",
@@ -84,6 +93,7 @@
       "createdAt": "2022.4.10",
       "nickname": "이민재",
       "like": 6,
+      "report": 0,
       "solved": true,
       "hashtags": [
         "#질문",
@@ -99,7 +109,8 @@
       "anonymous": false,
       "createdAt": "2022.4.11",
       "nickname": "김보원",
-      "like": 0,
+      "like": 1,
+      "report": 1,
       "solved": false,
       "hashtags": [
         "#홍보"
@@ -115,6 +126,8 @@
       "nickname": "김보원",
       "anonymous": false,
       "createdAt": "2022.4.10",
+      "like": 10,
+      "report": 0,
       "id": 1
     },
     {
@@ -124,16 +137,9 @@
       "nickname": "김보원",
       "anonymous": true,
       "createdAt": "2022.4.10",
+      "like": 10,
+      "report": 0,
       "id": 2
-    },
-    {
-      "userId": 1,
-      "postId": 2,
-      "content": "저도 잘 모르겠습니다.",
-      "nickname": "김보원",
-      "anonymous": false,
-      "createdAt": "2022.4.10",
-      "id": 3
     },
     {
       "userId": 1,
@@ -142,6 +148,8 @@
       "nickname": "김보원",
       "anonymous": true,
       "createdAt": "2022.4.11",
+      "like": 0,
+      "report": 0,
       "id": 4
     }
   ]

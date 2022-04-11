@@ -24,7 +24,11 @@
 			.navbar {
 				height: 6rem;
 			}
-
+            .profile-image {
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+			}
 			.navbar-brand {
 				font-size: 2rem;
 			}
@@ -33,7 +37,7 @@
 			}
 			.my-info {
 				width: 80%;
-				border: 1px solid black;
+				/* border: 1px solid black; */
 				margin: 4rem auto;
 				background-color: white;
 				padding: 4rem;
@@ -46,7 +50,7 @@
 				margin-right: 2rem;
 				border-right: 1px solid rgb(233, 236, 239);
 			}
-			.profile-image {
+			.big-profile-image {
 				width: 128px;
 				height: 128px;
 				object-fit: cover;
@@ -61,8 +65,14 @@
 				display: flex;
 				flex-direction: column;
 				font-weight: bold;
-				font-size: 1.2rem;
+				font-size: 1rem;
 				line-height: 2.3rem;
+			}
+			.my-posts {
+				cursor: pointer;
+			}
+			.my-comments {
+				cursor: pointer;
 			}
 			.hashtags-form {
 				align-items: center;
@@ -88,62 +98,79 @@
 				color: blue;
 				cursor: pointer;
 			}
+			.board-title {
+				padding: 0.8rem;
+				text-align: center;
+				color: gray;
+				border: 1px solid rgb(233, 236, 239);
+			}
+			.board-content {
+				padding: 0.4rem;
+				border-bottom: 1px solid rgb(233, 236, 239);
+				color: gray;
+				cursor: pointer;
+				padding-left: 2rem;
+			}
 		</style>
 	</head>
 	<body>
 		<!-- 헤더 -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">KT-BOX</a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="mypage.html">MyPage</a>
-						</li>
+				<form class="d-flex">
+					<input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success search-btn" type="submit">Search</button>
+				</form>
+				<img class="profile-image" src="" alt="" style="float:right;">
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						다른 계정
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+						<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+						<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+						<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
 					</ul>
 				</div>
-				<form class="d-flex">
-					<input
-						class="form-control me-2 search"
-						type="search"
-						placeholder="Search"
-						aria-label="Search"
-					/>
-					<button class="btn btn-outline-success search-btn" type="submit">
-						Search
-					</button>
-				</form>
-				<div class="myinfo">내정보:</div>
 			</div>
+			
 		</nav>
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Home</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="postform.html">질문하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="answer.html">답변하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="mypage.html">마이페이지</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
 		<div class="container-fluid">
 			<div class="my-info">
 				<h3>마이페이지</h3>
 				<hr />
 				<div class="row">
 					<div class="col-4 profile">
-						<img class="profile-image" src="" alt="" />
+						<img class="big-profile-image" src="" alt="" />
 						<span class="profile-nickname"></span>
 						<span style="color: gray; cursor: pointer">수정하기</span>
 					</div>
 					<div class="col profile-content">
 						<span class="my-posts"></span>
 						<span class="my-comments"></span>
-						<span class="hashtags">관심 해쉬태그</span>
+						<span class="hashtags">관심 해시태그</span>
 						<div class="hashtags-form">
 							<input class="hashtag-add" type="text" />
 							<button class="hashtag-add-btn">추가</button>
@@ -151,24 +178,40 @@
 						<div class="hashtag-list"></div>
 					</div>
 				</div>
+				<br />
+				<hr />
+				<h3 class="my-content"></h3>
+				<div class="row board-title">
+					<div class="col-8">제목</div>
+					<div class="col">카테고리</div>
+					<div class="col">작성</div>
+				</div>
+				<div class="row board-contents"></div>
+				<br />
 			</div>
 		</div>
 		<script>
 			$(function () {
-				var user = getUser(userId);
-				var posts = getUserPost(userId);
-				var comments = getUserComment(userId);
+				// 유저 정보
+				var user = getLoginUser();
+				$('.profile-image').attr('src','images/'+user.image);
+				var posts = getUserPost(user.id);
+				var comments = getUserComment(user.id);
+				var commentPosts = getUserCommentPosts(comments);
+				console.log(commentPosts);
 				console.log(user);
 
 				// DOM
-				$('.profile-image').attr('src', 'images/' + user.image); // 이미지 추가
-				$('.profile-nickname').append(user.nickname);
+				$('.big-profile-image').attr('src', 'images/' + user.image); // 이미지 추가
+				$('.profile-nickname').append('👶🏻  ' + user.nickname);
 				$('.my-posts').append(`내가 쓴 게시글 : ${posts.length} 개`);
 				$('.my-comments').append(`내가 쓴 댓글 : ${comments.length} 개`);
-
+				$('.board-title').hide();
 				user.hashtags.forEach((hashtag) => {
 					$('.hashtag-list').append(
-						$(`<span class="hashtag">${hashtag}</span>`)
+						$(
+							`<span class="hashtag" style="margin-right:1rem;">${hashtag}</span>`
+						)
 					);
 				});
 
@@ -177,6 +220,87 @@
 					var hashtag = $('.hashtag-add').val();
 					addHashtag(userId, hashtag);
 				});
+				$('.my-posts').on('click', function () {
+					$('.my-content').empty();
+					$('.board-title').show();
+					$('.my-content').append(`나의 게시글`);
+					$('.board-contents').empty();
+					// 게시판에 목록 추가
+					var target = $('.board-contents');
+					target.empty();
+					posts.forEach((post) => {
+						target.append(
+							$(
+								`<div class="col-8 board-content" post-id=${post.id}>${post.title}</div>`
+							)
+						);
+						target.append(
+							$(
+								`<div class="col board-content post-id=${post.id}">${post.category}</div>`
+							)
+						);
+						target.append(
+							$(
+								`<div class="col board-content post-id=${post.id}">${post.createdAt}</div>`
+							)
+						);
+					});
+					$('.board-content').on('click', function () {
+						console.log(this.getAttribute('post-id'));
+						var postId = this.getAttribute('post-id');
+						window.location.href = `post.html?postId=${postId}`;
+					});
+				});
+				$('.my-comments').on('click', function () {
+					$('.my-content').empty();
+					$('.board-title').show();
+					$('.board-contents').empty();
+					$('.my-content').append(`나의 댓글`);
+					$('.board-contents').empty();
+					// 게시판에 목록 추가
+					var target = $('.board-contents');
+					target.empty();
+					commentPosts.forEach((post) => {
+						target.append(
+							$(
+								`<div class="col-8 board-content" post-id=${post.id}>${post.title}</div>`
+							)
+						);
+						target.append(
+							$(
+								`<div class="col board-content post-id=${post.id}">${post.category}</div>`
+							)
+						);
+						target.append(
+							$(
+								`<div class="col board-content post-id=${post.id}">${post.createdAt}</div>`
+							)
+						);
+					});
+					$('.board-content').on('click', function () {
+						console.log(this.getAttribute('post-id'));
+						var postId = this.getAttribute('post-id');
+						window.location.href = `post.html?postId=${postId}`;
+					});
+				});
+                // HEADER FUNCTION
+
+				// search 버튼 클릭
+				$('.search-btn').on('click', function (e) {
+					e.preventDefault();
+					var hashtag = $('.search').val();
+					console.log($('.search').val());
+					console.log(hashtag);
+					searchByHashtag(hashtag);
+					window.location.href = `search.html?type=hashtag&word=${hashtag}`;
+				});
+
+				// 다른 계정 로그인
+				$('.login').on('click', function() {
+					// console.log(this.getAttribute('user-id'));
+					var new_user = this.getAttribute('user-id');
+					login(new_user);
+				})
 			});
 		</script>
 	</body>

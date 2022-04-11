@@ -219,6 +219,16 @@ function getUserComment(userId) {
 	return result;
 }
 
+// 특정 유저가 댓글단 게시글 불러오기
+function getUserCommentPosts(comments) {
+	var result = [];
+	comments.forEach((comment) => {
+		var post = getPost(comment.postId);
+		// console.log(post);
+		result.push(post);
+	});
+	return result;
+}
 // 해쉬태그 추가
 function addHashtag(userId, hashtag) {
 	var user = getUser(userId);
@@ -234,6 +244,137 @@ function addHashtag(userId, hashtag) {
 		},
 		error: function () {
 			alert('해쉬태그 업데이트 실패');
+		},
+	});
+}
+
+// 로그인한 유저 불러오기
+function getLoginUser() {
+	var result;
+	$.ajax({
+		type: 'get',
+		url: `http://localhost:3000/users?login=true`,
+		contentType: 'application/json',
+		async: false,
+		success: function (data) {
+			result = data;
+		},
+		error: function () {
+			alert('로그인 정보 불러오기 실패');
+		},
+	});
+	return result[0];
+}
+
+// 로그인 바꾸기
+function login(userId) {
+	var user = getLoginUser();
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/users/${user.id}`,
+		contentType: 'application/json',
+		async: false,
+		data: JSON.stringify({ login: false }),
+		success: function (data) {
+			console.log(user.id + '로그아웃');
+		},
+		error: function () {
+			alert('로그아웃 실패');
+		},
+	});
+	var newuser;
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/users/${userId}`,
+		contentType: 'application/json',
+		async: false,
+		data: JSON.stringify({ login: true }),
+		success: function (data) {
+			newuser = data;
+			console.log(userId + '로그인');
+		},
+		error: function () {
+			alert('로그인 실패');
+		},
+	});
+	return newuser;
+}
+
+// 댓글 좋아요
+function addCommentLike(commendId, like) {
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/comments/${commendId}`,
+		contentType: 'application/json',
+		async: false,
+		data: JSON.stringify({ like: like }),
+		success: function (data) {
+			console.log('좋아요 업데이트 성공');
+		},
+		error: function () {
+			alert('좋아요 업데이트 실패');
+		},
+	});
+}
+
+// 댓글 삭제
+function deleteComment(commentId) {
+	$.ajax({
+		type: 'delete',
+		url: `http://localhost:3000/comments/${commentId}`,
+		async: false,
+		success: function (data) {
+			console.log('삭제:', data);
+		},
+		error: function () {
+			alert('댓글 삭제 실패');
+		},
+	});
+}
+
+// 게시글 신고
+function addReport(postId, report) {
+	if (report >= 10) {
+		alert('신고에 의해 게시글이 삭제되었습니다.');
+		window.location.href = 'index.html';
+		deletePost(postId);
+		return;
+	}
+	var data = { report: report };
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/posts/${postId}`,
+		contentType: 'application/json',
+		data: JSON.stringify(data),
+		async: false,
+		success: function (data) {
+			console.log('게시글 신고 업데이트 성공');
+		},
+		error: function () {
+			alert('게시글 신고 업데이트 실패');
+		},
+	});
+}
+
+// 댓글 신고
+function addCommentReport(commentId, report) {
+	if (report >= 10) {
+		alert('신고에 의해 댓글이 삭제되었습니다.');
+		deleteComment(commentId);
+		return;
+	}
+	var data = { report: report };
+	$.ajax({
+		type: 'patch',
+		url: `http://localhost:3000/comments/${commentId}`,
+		contentType: 'application/json',
+		data: JSON.stringify(data),
+		async: false,
+		success: function (data) {
+			console.log('댓글 신고 업데이트 성공');
+		},
+		error: function () {
+			alert('댓글 신고 업데이트 실패');
 		},
 	});
 }
