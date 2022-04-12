@@ -17,81 +17,43 @@
 		<script src="apis.js"></script>
 		<script src="setUser.js"></script>
 		<script src="category.js"></script>
-		<script src="header.js"></script>
-		<style>
-			.navbar {
-				height: 6rem;
-				justify-content: flex-start;
-			}
-
-			.navbar-brand {
-				font-size: 2rem;
-			}
-			.b{
-				border: solid 1px black;
-			}
-			.link{
-				border-radius: 20px;
-				justify-content: left;
-				align-items: baseline;
-				height: 10rem;
-				margin: 10px;
-			}
-			.card{
-				border: solid 1px black;
-				background-color: white;
-			}
-			.post {
-				cursor: pointer;
-			}
-			.category {
-				cursor: pointer;
-			}
-			body {
-				background-color: #DDDDDD;
-			}
-			.profile-image {
-				width: 48px;
-				height: 48px;
-				border-radius: 50%;
-			}
-			
-		</style>
+		<link rel="stylesheet" href="css/stylesheet.css" />
+		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
 	</head>
-
 	<body>
 		<!-- 헤더 -->
 		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">KT-BOX</a>
+			<div class="navbar-top">
+				<a class="navbar-brand" href="index.html"
+          ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
+        /></a>
 				<form class="d-flex">
-					<input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success search-btn" type="submit">Search</button>
+					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline search-btn" type="submit">Search</button>
 				</form>
-				<img class="profile-image" src="" alt="" style="float:right;">
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						다른 계정
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
-						<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
-						<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
-						<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
-					</ul>
-				</div>
-			</div>
-			
+				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							다른 계정
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+							<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+							<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+							<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
+						</ul>
+				</div>			
+			</div>		 
 		</nav>
 		
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
 			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
 				  <li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">Home</a>
+					<a class="nav-link active" aria-current="page" href="index.html">홈</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="postform.html">질문하기</a>
+					<a class="nav-link question" href="postform.html">질문하기</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" href="answer.html">답변하기</a>
@@ -102,32 +64,46 @@
 				</ul>
 			  </div>
 			</div>
-		  </nav>
+		</nav>
+
+
 		<!-- <div class="card-list"></div> -->
-		<div class="container-fluid" style="background-color: #DDDDDD;">
+		<div class="container-fluid main-box" style="background-color: #DDDDDD;">
 			<div class="row justify-content-around">
 				<!--1:6:1 10 -> 2 6 2느낌으로 나누고 처음 1은 이미 정해짐-->
-				<div class="col-2 md b" style="background-color: white; margin: 10px;">
-					<h4>카테고리</h4>
+				<div class="col-2 b">
+					<p>카테고리</p>
+					<div class="side-nav">
 					<p class="all-click" style="cursor: pointer">전체</p>
-					<span class="part-click" style="cursor: pointer">부문별</span>
-					<ul class="part"></ul>
-					<span class="common-click" style="cursor: pointer">공통</span>
-					<ul class="common"></ul>
+					<span class="part-click" >부문별</span>
+					<i class="fa-solid fa-angle-down rotate1 part-click"></i>
 				</div>
-				<div class="col-7 md">
-					<div class="row justify-content-around">
+				<div class="side-nav">
+					<ul class="part"></ul>
+					<span class="common-click">공통</span>
+					<i class="fa-solid fa-angle-down rotate2 common-click"></i>
+					<ul class="common"></ul>
+					</div>
+				</div>
+				<div class="col-7">
+					<div class="row justify-content-around card-box">
 						<div class="col-md link shadow-sm" style="background-color: #3FBDB9;">
-							<h>기본 업무 처리할 때는?</h><br>
+							<div class="text-box">
+							<h2>기본 업무 처리할 때는?</h2><br>
 							<a href="http://kate.kt.com">KATE</a>
 						</div>
+						</div>
 						<div class="col-md link shadow-sm" style="background-color: #E0542C;">
-							<h>IT 프로세스 도움이 필요할 때는?</h><br>
+							<div class="text-box">
+							<h2>IT 프로세스 도움이 필요할 때는?</h2><br>
 							<a href="http://kate.kt.com">IT's PORTAL</a>
+							</div>
 						</div>
 						<div class="col-md link shadow-sm" style="background-color: #EC6D6D;">
-							<h>지식을 쌓고 싶을 때는?</h><br>
-							<a href="">GENIUS</a>
+							<div class="text-box">
+							<h2>지식을 쌓고 싶을 때는?</h2><br>
+							<a href="https://ktedu.kt.com/main/portalMain.do">GENIUS</a>
+						</div>
 						</div>
 					</div>
 					<div class="container">
@@ -153,7 +129,7 @@
 						</div>
 					  </div>
 				</div>
-				<div class="col-2 md" style="background-color: white; margin: 10px">
+				<div class="col-2 b" style="background-color: white; margin: 10px">
 					<p class="myinfo">내정보</p>
 				</div>
 			</div>
@@ -193,9 +169,11 @@
 				});
 				$('.part-click').on('click', function () {
 					$('.part li').toggle();
+					$('.rotate1').toggleClass("down");
 				});
 				$('.common-click').on('click', function () {
 					$('.common li').toggle();
+					$('.rotate2').toggleClass('down');
 				});
 
 				$('.all-click').on('click', function() {
@@ -203,6 +181,11 @@
 				})
 				$('.category').on('click', function () {
 					setPosts(this.getAttribute('data'));
+					$('.fa-angle-down').css({
+							"-webkit-transform": "rotate(180deg)",
+							"-moz-transform": "rotate(180deg)",
+							"transform": "rotate(180deg)" 
+					});
 				});
 
 				// 분야별 게시글 세팅

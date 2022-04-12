@@ -16,17 +16,14 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="setUser.js"></script>
 		<script src="apis.js"></script>
+		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/header.css" />
 		<style>
-			.navbar {
-				height: 6rem;
-			}
-
-			.navbar-brand {
-				font-size: 2rem;
-			}
+			
 			.form-container {
 				margin: 4rem auto;
-				/* background-color: antiquewhite; */
+				background-color: white;
+				padding: 2rem;
 				width: 40rem;
 			}
 			.form-container label {
@@ -123,40 +120,48 @@
 	</head>
 	<body>
 		<!-- 헤더 -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">KT-BOX</a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">MyPage</a>
-						</li>
-					</ul>
-				</div>
+		<!-- 헤더 -->
+		<nav class="navbar navbar-light bg-light">
+			<div class="navbar-top">
+				<a class="navbar-brand" href="index.html"
+          ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
+        /></a>
 				<form class="d-flex">
-					<input
-						class="form-control me-2"
-						type="search"
-						placeholder="Search"
-						aria-label="Search"
-					/>
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline search-btn" type="submit">Search</button>
 				</form>
-				<div class="myinfo">내정보:</div>
+				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							다른 계정
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+							<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+							<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+							<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
+						</ul>
+				</div>			
+			</div>		 
+		</nav>
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.html">홈</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link question active" href="postform.html">질문하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="answer.html">답변하기</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="mypage.html">마이페이지</a>
+				  </li>
+				</ul>
+			  </div>
 			</div>
 		</nav>
 		<!-- 질문 폼 -->
@@ -196,7 +201,9 @@
 		<script src="category.js"></script>
 		<script>
 			$(function () {
-				var user = getUser(userId);
+				// 유저 정보
+				var user = getLoginUser();
+				$('.profile-image').attr('src','images/'+user.image);
 				$('.myinfo').html(`내정보 : ${user.nickname}`);
 				// 게시하기 버튼 클릭
 				$('.submit').on('click', function (e) {
@@ -283,6 +290,23 @@
 				});
 				addCategory('--분류--', first_classification, 1);
 			});
+
+			// search 버튼 클릭
+			$('.search-btn').on('click', function (e) {
+					e.preventDefault();
+					var hashtag = $('.search').val();
+					console.log($('.search').val());
+					console.log(hashtag);
+					searchByHashtag(hashtag);
+					window.location.href = `search.html?type=hashtag&word=${hashtag}`;
+				});
+
+			// 다른 계정 로그인
+			$('.login').on('click', function() {
+				// console.log(this.getAttribute('user-id'));
+				var new_user = this.getAttribute('user-id');
+				login(new_user);	
+			})
 		</script>
 	</body>
 </html>

@@ -15,6 +15,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="setUser.js"></script>
 		<script src="apis.js"></script>
+		<link rel="stylesheet" href="css/header.css" />
+		<script
+			src="https://kit.fontawesome.com/0526cc06e5.js"
+			crossorigin="anonymous"
+		></script>
 		<title>Document</title>
 		<style>
 			.profile-image {
@@ -22,17 +27,8 @@
 				height: 48px;
 				border-radius: 50%;
 			}
-			body {
-				background-color: rgb(233, 236, 239);
-				border: 1px solid #e5e5e5;
-			}
-			.navbar {
-				height: 6rem;
-			}
-
-			.navbar-brand {
-				font-size: 2rem;
-			}
+			
+			
 			.top-box {
 				display: flex;
 				justify-content: space-between;
@@ -90,7 +86,6 @@
 			}
 			.report {
 				margin-left: 1rem;
-
 			}
 			.report-btn {
 				padding-bottom: 1rem;
@@ -158,16 +153,17 @@
 				float: right;
 				margin-left: 1rem;
 			}
-			.comment_like_btn{
+			.comment_like_btn {
 				float: right;
-				margin-left: 0.5rem;	
+				margin-left: 0.5rem;
 			}
 			.comment-report {
 				float: right;
 				margin-left: 1rem;
 			}
 			.comment-delete {
-				float:right; 
+				float: right;
+				margin-left: 1rem;
 				cursor: pointer;
 				background-color: #6cacf2;
 				padding: 3px;
@@ -206,37 +202,39 @@
 
 	<body>
 		<!-- 헤더 -->
+		<!-- 헤더 -->
 		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">KT-BOX</a>
+			<div class="navbar-top">
+				<a class="navbar-brand" href="index.html"
+          ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
+        /></a>
 				<form class="d-flex">
-					<input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success search-btn" type="submit">Search</button>
+					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline search-btn" type="submit">Search</button>
 				</form>
-				<img class="profile-image" src="" alt="" style="float:right;">
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						다른 계정
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
-						<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
-						<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
-						<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
-					</ul>
-				</div>
-			</div>
-			
+				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							다른 계정
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item login" user-id="1" href="#">김보원</a></li>
+							<li><a class="dropdown-item login" user-id="2" href="#">김수연</a></li>
+							<li><a class="dropdown-item login" user-id="3" href="#">박찬영</a></li>
+							<li><a class="dropdown-item login" user-id="4" href="#">이민재</a></li>
+						</ul>
+				</div>			
+			</div>		 
 		</nav>
 		
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">			
 			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
 				  <li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">Home</a>
+					<a class="nav-link" aria-current="page" href="index.html">홈</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="postform.html">질문하기</a>
+					<a class="nav-link question" href="postform.html">질문하기</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" href="answer.html">답변하기</a>
@@ -247,9 +245,9 @@
 				</ul>
 			  </div>
 			</div>
-		  </nav>
+		</nav>
 		<!-- 내용 -->
-		<div class="container-md">
+		<div class="container">
 			<div class="contents">
 				<div class="top-box">
 					<p class="category"></p>
@@ -301,8 +299,8 @@
 			$(document).ready(function () {
 				// 유저 정보
 				var user = getLoginUser();
-				console.log('user   :',user);
-				$('.profile-image').attr('src','images/'+user.image);
+				console.log('user   :', user);
+				$('.profile-image').attr('src', 'images/' + user.image);
 				var post = getPost(postId); // post
 				var comments = getComments(postId); // comments
 				$('.myinfo').html(`내정보 : ${user.nickname}`);
@@ -317,7 +315,6 @@
 				post.solved
 					? $('.solved').append(`<span class="solved-text">해결완료</span>`)
 					: $('.solved').append(`<span class="solved-text">미해결 질문</span>`);
-				
 
 				$('.answer-form').hide();
 
@@ -326,7 +323,7 @@
 				$('.title').append(`<span style="margin-right:1rem;">Q</span>`);
 				$('.title').append($(`<h1>${post.title}<h1/>`));
 				$('.like').html(`좋아요 : ${post.like}`);
-				$('.report').html(`신고횟수 : ${post.report}`)
+				$('.report').html(`신고횟수 : ${post.report}`);
 				$('.content').html(post.content);
 				$('.post-info').append(
 					$(
@@ -354,9 +351,9 @@
 					addLike(postId, post.like + 1);
 				});
 				// 게시글 신고
-				$('.report-btn').on('click', function() {
+				$('.report-btn').on('click', function () {
 					addReport(postId, post.report + 1);
-				})
+				});
 				// 댓글 업로드
 				console.log(user);
 				$('.answer-submit').on('click', function (e) {
@@ -364,11 +361,11 @@
 					var comment_content = $('.answer').val();
 					var date = new Date();
 					var data = {
-						userId:user.id,
+						userId: user.id,
 						postId: parseInt(postId),
 						content: comment_content,
 						nickname: user.nickname,
-						like:0,
+						like: 0,
 						report: 0,
 						anonymous: anonymous === 'true' ? true : false,
 						createdAt:
@@ -385,22 +382,51 @@
 					comment.content = comment.content.replace(/\n/gi, '<br/>');
 					var comment_tag = $('<div class="comment"></div>');
 					var comment_user = getUser(comment.userId);
-					comment_tag.append(comment.anonymous ? `<img class="profile-image" src="images/anonymous.png"/>` 
-					: $(`<img class="profile-image" src="images/${comment_user.image}"/>`))
-					comment_tag.append(comment.anonymous ? $('<span class="user-name">익명</span>'): $(`<span class="user-name">${comment_user.nickname}</span>`))
-					
-					comment_tag.append(comment.userId === user.id 
-					? $(`<span class="comment-delete" comment-id=${comment.id}>삭제</span>`) 
-					: $(`<span class="comment-like-btn" comment-id="${comment.id}" style="float:right;cursor:pointer;margin-left:0.5rem">👍</span>`));
-					
-					comment_tag.append($(`<span class="comment-like" comment-id=${comment.id} value=${comment.like}>좋아요 : ${comment.like}</span>`))
-					comment_tag.append(comment.userId === user.id 
-					? null
-					: $(`<span class="comment-report-btn" comment-id="${comment.id}"style="float:right;cursor:pointer;margin-left:0.5rem">😡</span>`));
-					comment_tag.append($(`<span class="comment-report" comment-id=${comment.id} value=${comment.report}> 신고횟수 : ${comment.report}</span>`))
+					comment_tag.append(
+						comment.anonymous
+							? `<img class="profile-image" src="images/anonymous.png"/>`
+							: $(
+									`<img class="profile-image" src="images/${comment_user.image}"/>`
+							  )
+					);
+					comment_tag.append(
+						comment.anonymous
+							? $('<span class="user-name">익명</span>')
+							: $(`<span class="user-name">${comment_user.nickname}</span>`)
+					);
+					comment_tag.append(
+						comment.userId === user.id
+							? null
+							: $(
+									`<span class="comment-report-btn" comment-id="${comment.id}"style="float:right;cursor:pointer;margin-left:0.5rem">😡</span>`
+							  )
+					);
+					comment_tag.append(
+						$(
+							`<span class="comment-report" comment-id=${comment.id} value=${comment.report}> 신고횟수 : ${comment.report}</span>`
+						)
+					);
+					comment_tag.append(
+						comment.userId === user.id
+							? $(
+									`<span class="comment-delete" comment-id=${comment.id}>삭제</span>`
+							  )
+							: $(
+									`<span class="comment-like-btn" comment-id="${comment.id}" style="float:right;cursor:pointer;margin-left:0.5rem">👍</span>`
+							  )
+					);
 
-					comment_tag.append($(`<p class="comment-content">${comment.content}</p>`));
-					comment_tag.append($(`<span class="comment-date">${comment.createdAt}</span>`))
+					comment_tag.append(
+						$(
+							`<span class="comment-like" comment-id=${comment.id} value=${comment.like}>좋아요 : ${comment.like}</span>`
+						)
+					);
+					comment_tag.append(
+						$(`<p class="comment-content">${comment.content}</p>`)
+					);
+					comment_tag.append(
+						$(`<span class="comment-date">${comment.createdAt}</span>`)
+					);
 					$('.comments').append(comment_tag);
 				});
 
@@ -417,10 +443,10 @@
 				});
 
 				// 댓글 삭제
-				$('.comment-delete').on('click',function(){
+				$('.comment-delete').on('click', function () {
 					console.log(this.getAttribute('comment-id'));
 					deleteComment(this.getAttribute('comment-id'));
-				})
+				});
 				// 해시태그 이벤트 등록
 				$('.hashtag').on('click', function () {
 					// console.log(this.getAttribute('value'));
@@ -429,24 +455,24 @@
 					window.location.href = `search.html?type=hashtag&word=${word}`;
 				});
 				// 댓글 좋아요
-				$('.comment-like-btn').on('click', function(){
+				$('.comment-like-btn').on('click', function () {
 					var commentId = this.getAttribute('comment-id');
 					var commentLike = $(`.comment-like[comment-id=${commentId}]`);
 					commentLike = commentLike.attr('value');
-					console.log(commentLike)
+					console.log(commentLike);
 					addCommentLike(commentId, parseInt(commentLike) + 1);
 					// addCommentLike(this.getAttribute('comment-id'),$('.comment-like[comment-id=]'));
-				})
+				});
 				// 댓글 신고하기
-				$('.comment-report-btn').on('click', function(){
+				$('.comment-report-btn').on('click', function () {
 					var commentId = this.getAttribute('comment-id');
 					var commentReport = $(`.comment-report[comment-id=${commentId}]`);
 					commentReport = commentReport.attr('value');
-					console.log(commentReport)
+					console.log(commentReport);
 					addCommentReport(commentId, parseInt(commentReport) + 1);
 					// addCommentLike(this.getAttribute('comment-id'),$('.comment-like[comment-id=]'));
-				})
-				
+				});
+
 				// HEADER FUNCTION
 
 				// search 버튼 클릭
@@ -460,11 +486,11 @@
 				});
 
 				// 다른 계정 로그인
-				$('.login').on('click', function() {
+				$('.login').on('click', function () {
 					// console.log(this.getAttribute('user-id'));
 					var new_user = this.getAttribute('user-id');
-					login(new_user);	
-				})
+					login(new_user);
+				});
 			});
 		</script>
 	</body>

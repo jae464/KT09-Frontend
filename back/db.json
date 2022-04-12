@@ -15,7 +15,7 @@
       "nickname": "김수연",
       "hashtags": [],
       "image": "2.jpg",
-      "login": true,
+      "login": false,
       "id": 2
     },
     {
@@ -29,7 +29,7 @@
       "nickname": "이민재",
       "hashtags": [],
       "image": "4.jpg",
-      "login": false,
+      "login": true,
       "id": 4
     }
   ],
@@ -43,6 +43,7 @@
       "createdAt": "2022.4.10",
       "nickname": "이민재",
       "like": 16,
+      "report": 0,
       "solved": true,
       "hashtags": [
         "#아이폰",
@@ -116,6 +117,23 @@
         "#홍보"
       ],
       "id": 5
+    },
+    {
+      "userId": 4,
+      "title": "asd",
+      "category": "AI/DX 융합사업부문",
+      "content": "asdasdasdadasdqwe",
+      "anonymous": true,
+      "createdAt": "2022.4.12",
+      "nickname": "이민재",
+      "like": 0,
+      "report": 0,
+      "solved": false,
+      "hashtags": [
+        "#asd",
+        "#vx"
+      ],
+      "id": 6
     }
   ],
   "comments": [
@@ -127,7 +145,7 @@
       "anonymous": false,
       "createdAt": "2022.4.10",
       "like": 10,
-      "report": 0,
+      "report": 2,
       "id": 1
     },
     {
@@ -138,7 +156,7 @@
       "anonymous": true,
       "createdAt": "2022.4.10",
       "like": 10,
-      "report": 0,
+      "report": 2,
       "id": 2
     },
     {
