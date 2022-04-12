@@ -1,185 +1,175 @@
 {
-  "users": [
-    {
-      "nickname": "김보원",
-      "hashtags": [
-        "#아이폰",
-        "#김보원",
-        "#제안서"
-      ],
-      "image": "1.jpg",
-      "login": false,
-      "id": 1
-    },
-    {
-      "nickname": "김수연",
-      "hashtags": [],
-      "image": "2.jpg",
-      "login": true,
-      "id": 2
-    },
-    {
-      "nickname": "박찬영",
-      "hashtags": [],
-      "image": "3.jpg",
-      "login": false,
-      "id": 3
-    },
-    {
-      "nickname": "이민재",
-      "hashtags": [],
-      "image": "4.jpg",
-      "login": false,
-      "id": 4
-    }
-  ],
-  "posts": [
-    {
-      "userId": 4,
-      "title": "아이폰 화면 캡쳐 방지 개선",
-      "category": "회사생활",
-      "content": "아이폰\n화면\n캡쳐 방지 개선",
-      "anonymous": false,
-      "createdAt": "2022.4.10",
-      "nickname": "이민재",
-      "like": 16,
-      "report": 0,
-      "solved": true,
-      "hashtags": [
-        "#아이폰",
-        "#화면"
-      ],
-      "id": 1
-    },
-    {
-      "userId": 4,
-      "title": "제안서 작성 시 유의해야할 점이나 팁 있을까요??",
-      "category": "회사생활",
-      "content": "제안서\n작성\n내용",
-      "anonymous": false,
-      "createdAt": "2022.4.10",
-      "nickname": "이민재",
-      "like": 10,
-      "report": 0,
-      "solved": false,
-      "hashtags": [
-        "#제안서",
-        "#작성"
-      ],
-      "id": 2
-    },
-    {
-      "userId": 4,
-      "title": "Custom 부문 관련 질문",
-      "category": "Custom 부문",
-      "content": "커\n스\n텀\n관련 질문",
-      "anonymous": true,
-      "createdAt": "2022.4.10",
-      "nickname": "이민재",
-      "like": 2,
-      "report": 0,
-      "solved": true,
-      "hashtags": [
-        "#커스텀",
-        "#관련"
-      ],
-      "id": 3
-    },
-    {
-      "userId": 4,
-      "title": "Custom 질문 2",
-      "category": "Custom 부문",
-      "content": "ㅁㄴㅇㄹㄴㅁㅇㅁㄴㅇ",
-      "anonymous": false,
-      "createdAt": "2022.4.10",
-      "nickname": "이민재",
-      "like": 6,
-      "report": 0,
-      "solved": true,
-      "hashtags": [
-        "#질문",
-        "#입니다"
-      ],
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "title": "홍보실 질문 입니다.",
-      "category": "홍보실",
-      "content": "홍보 질문입니다.",
-      "anonymous": false,
-      "createdAt": "2022.4.11",
-      "nickname": "김보원",
-      "like": 1,
-      "report": 1,
-      "solved": false,
-      "hashtags": [
-        "#홍보"
-      ],
-      "id": 5
-    },
-    {
-      "userId": 4,
-      "title": "asd",
-      "category": "AI/DX 융합사업부문",
-      "content": "asdasdasdadasdqwe",
-      "anonymous": true,
-      "createdAt": "2022.4.12",
-      "nickname": "이민재",
-      "like": 0,
-      "report": 0,
-      "solved": false,
-      "hashtags": [
-        "#asd",
-        "#vx"
-      ],
-      "id": 6
-    }
-  ],
-  "comments": [
-    {
-      "userId": 1,
-      "postId": 1,
-      "content": "asdasd",
-      "nickname": "김보원",
-      "anonymous": false,
-      "createdAt": "2022.4.10",
-      "like": 10,
-      "report": 2,
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "postId": 1,
-      "content": "ㅇㅁㄴㅇㅁㅇㅁ",
-      "nickname": "김보원",
-      "anonymous": true,
-      "createdAt": "2022.4.10",
-      "like": 10,
-      "report": 2,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "postId": 4,
-      "content": "익명 답변입니다!",
-      "nickname": "김보원",
-      "anonymous": true,
-      "createdAt": "2022.4.11",
-      "like": 0,
-      "report": 0,
-      "id": 4
-    },
-    {
-      "userId": 2,
-      "postId": 1,
-      "content": "안녕하세요",
-      "nickname": "김수연",
-      "like": 0,
-      "report": 0,
-      "anonymous": false,
-      "createdAt": "2022.4.12",
-      "id": 5
-    }
-  ]
+	"users": [
+		{
+			"nickname": "김보원",
+			"hashtags": ["#아이폰", "#김보원", "#제안서"],
+			"image": "1.jpg",
+			"login": false,
+			"id": 1
+		},
+		{
+			"nickname": "김수연",
+			"hashtags": [],
+			"image": "2.jpg",
+			"login": false,
+			"id": 2
+		},
+		{
+			"nickname": "박찬영",
+			"hashtags": [],
+			"image": "3.jpg",
+			"login": true,
+			"id": 3
+		},
+		{
+			"nickname": "이민재",
+			"hashtags": [],
+			"image": "4.jpg",
+			"login": false,
+			"id": 4
+		}
+	],
+	"posts": [
+		{
+			"userId": 4,
+			"title": "아이폰 화면 캡쳐 방지 개선",
+			"category": "회사생활",
+			"content": "아이폰\n화면\n캡쳐 방지 개선",
+			"anonymous": false,
+			"createdAt": "2022.4.10",
+			"nickname": "이민재",
+			"like": 16,
+			"report": 0,
+			"solved": true,
+			"hashtags": ["#아이폰", "#화면"],
+			"id": 1
+		},
+		{
+			"userId": 4,
+			"title": "제안서 작성 시 유의해야할 점이나 팁 있을까요??",
+			"category": "회사생활",
+			"content": "제안서\n작성\n내용",
+			"anonymous": false,
+			"createdAt": "2022.4.10",
+			"nickname": "이민재",
+			"like": 10,
+			"report": 0,
+			"solved": false,
+			"hashtags": ["#제안서", "#작성"],
+			"id": 2
+		},
+		{
+			"userId": 4,
+			"title": "Custom 부문 관련 질문",
+			"category": "Custom 부문",
+			"content": "커\n스\n텀\n관련 질문",
+			"anonymous": true,
+			"createdAt": "2022.4.10",
+			"nickname": "이민재",
+			"like": 2,
+			"report": 0,
+			"solved": true,
+			"hashtags": ["#커스텀", "#관련"],
+			"id": 3
+		},
+		{
+			"userId": 4,
+			"title": "Custom 질문 2",
+			"category": "Custom 부문",
+			"content": "ㅁㄴㅇㄹㄴㅁㅇㅁㄴㅇ",
+			"anonymous": false,
+			"createdAt": "2022.4.10",
+			"nickname": "이민재",
+			"like": 6,
+			"report": 0,
+			"solved": true,
+			"hashtags": ["#질문", "#입니다"],
+			"id": 4
+		},
+		{
+			"userId": 1,
+			"title": "홍보실 질문 입니다.",
+			"category": "홍보실",
+			"content": "홍보 질문입니다.",
+			"anonymous": false,
+			"createdAt": "2022.4.11",
+			"nickname": "김보원",
+			"like": 1,
+			"report": 1,
+			"solved": false,
+			"hashtags": ["#홍보"],
+			"id": 5
+		},
+		{
+			"userId": 4,
+			"title": "asd",
+			"category": "AI/DX 융합사업부문",
+			"content": "asdasdasdadasdqwe",
+			"anonymous": true,
+			"createdAt": "2022.4.12",
+			"nickname": "이민재",
+			"like": 0,
+			"report": 0,
+			"solved": false,
+			"hashtags": ["#asd", "#vx"],
+			"id": 6
+		}
+	],
+	"comments": [
+		{
+			"userId": 1,
+			"postId": 1,
+			"content": "asdasd",
+			"nickname": "김보원",
+			"anonymous": false,
+			"createdAt": "2022.4.10",
+			"like": 10,
+			"report": 2,
+			"id": 1
+		},
+		{
+			"userId": 1,
+			"postId": 1,
+			"content": "ㅇㅁㄴㅇㅁㅇㅁ",
+			"nickname": "김보원",
+			"anonymous": true,
+			"createdAt": "2022.4.10",
+			"like": 10,
+			"report": 2,
+			"id": 2
+		},
+		{
+			"userId": 1,
+			"postId": 4,
+			"content": "익명 답변입니다!",
+			"nickname": "김보원",
+			"anonymous": true,
+			"createdAt": "2022.4.11",
+			"like": 0,
+			"report": 0,
+			"id": 4
+		},
+		{
+			"userId": 2,
+			"postId": 1,
+			"content": "안녕하세요",
+			"nickname": "김수연",
+			"like": 1,
+			"report": 1,
+			"anonymous": false,
+			"createdAt": "2022.4.12",
+			"id": 5
+		},
+		{
+			"userId": 3,
+			"postId": 1,
+			"content": "\\^-^/",
+			"nickname": "박찬영",
+			"like": 0,
+			"report": 0,
+			"anonymous": false,
+			"createdAt": "2022.4.12",
+			"id": 6
+		}
+	]
 }
