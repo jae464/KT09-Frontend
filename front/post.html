@@ -396,7 +396,9 @@
 					);
 					comment_tag.append(
 						comment.userId === user.id
-							? null
+							? $(
+									`<span class="comment-delete" comment-id=${comment.id}>삭제</span>`
+							  )
 							: $(
 									`<span class="comment-report-btn" comment-id="${comment.id}"style="float:right;cursor:pointer;margin-left:0.5rem">😡</span>`
 							  )
@@ -407,13 +409,9 @@
 						)
 					);
 					comment_tag.append(
-						comment.userId === user.id
-							? $(
-									`<span class="comment-delete" comment-id=${comment.id}>삭제</span>`
-							  )
-							: $(
-									`<span class="comment-like-btn" comment-id="${comment.id}" style="float:right;cursor:pointer;margin-left:0.5rem">👍</span>`
-							  )
+						$(
+							`<span class="comment-like-btn" comment-id="${comment.id}" style="float:right;cursor:pointer;margin-left:0.5rem">👍</span>`
+						)
 					);
 
 					comment_tag.append(

@@ -15,7 +15,7 @@
       "nickname": "김수연",
       "hashtags": [],
       "image": "2.jpg",
-      "login": false,
+      "login": true,
       "id": 2
     },
     {
@@ -29,7 +29,7 @@
       "nickname": "이민재",
       "hashtags": [],
       "image": "4.jpg",
-      "login": true,
+      "login": false,
       "id": 4
     }
   ],
@@ -169,6 +169,17 @@
       "like": 0,
       "report": 0,
       "id": 4
+    },
+    {
+      "userId": 2,
+      "postId": 1,
+      "content": "안녕하세요",
+      "nickname": "김수연",
+      "like": 0,
+      "report": 0,
+      "anonymous": false,
+      "createdAt": "2022.4.12",
+      "id": 5
     }
   ]
 }
