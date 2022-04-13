@@ -1,0 +1,62 @@
+.main-container {
+  border: 1px solid rgb(233, 236, 239);
+}
+
+.profile-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.part-box {
+  align-items: center;
+
+  border: 1px solid #c4c4c4;
+  background-color: rgba(224, 84, 44, 0.2);
+  justify-content: center;
+}
+.part {
+  text-align: center;
+}
+.common {
+  text-align: center;
+}
+.part-contents {
+  box-sizing: border-box;
+  border-left: 1px solid #c4c4c4;
+  background-color: white;
+  line-height: 1.8;
+  height: 100%;
+}
+.common-box {
+  align-items: center;
+  background-color: rgba(224, 84, 44, 0.2);
+  border: 1px solid #c4c4c4;
+  border-top: none;
+}
+.common-contents {
+  padding: 1rem;
+  border-left: 1px solid #c4c4c4;
+  background-color: white;
+}
+.content {
+  margin-right: 0.5rem;
+  color: gray;
+  cursor: pointer;
+}
+.common-content {
+  margin-right: 0.5rem;
+  color: gray;
+  cursor: pointer;
+}
+.board-title {
+  padding: 0.8rem;
+  text-align: center;
+  color: gray;
+  border-bottom: 1px solid #c4c4c4;
+}
+.board-content {
+  padding: 0.4rem;
+  border-bottom: 1px solid #c4c4c4;
+  color: gray;
+  cursor: pointer;
+}

@@ -1,0 +1,118 @@
+.form-container {
+  margin: 4rem auto;
+  background-color: white;
+  padding: 2rem;
+  width: 40rem;
+}
+.form-container label {
+  font-size: 1.2rem;
+}
+.form-container .title-container {
+  width: 100%;
+  border: 1px solid black;
+  height: 2.5rem;
+  margin-left: 2rem;
+}
+.form-container #content {
+  width: 100%;
+}
+input {
+  border: none;
+  width: 100%;
+}
+.content {
+  height: 25rem;
+  width: 100%;
+  padding: 0;
+  margin-top: 2rem;
+  border: none;
+  border-bottom: 1px solid rgb(233, 236, 239);
+  resize: none;
+}
+.title {
+  height: 4rem;
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: bold;
+  padding: 0px;
+  border-bottom: 1px solid rgb(233, 236, 239);
+}
+.category {
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(233, 236, 239);
+}
+.category-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 0.1rem;
+}
+.category-select {
+  display: flex;
+  flex-direction: row;
+}
+.form-select {
+  width: 10rem;
+  margin-right: 2rem;
+}
+.tag {
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: bold;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid rgb(233, 236, 239);
+}
+.anonymous {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(233, 236, 239);
+}
+.anonymous-check {
+  width: auto;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+.button-area {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+.button-area button {
+  height: 35px;
+  width: 6rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.submit {
+  background: #ec6d6d;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.cancel {
+  transition: 0.3s ease;
+}
+.submit:hover,
+.cancel:hover {
+  background-color: white;
+  border: solid 2px #ec6d6d;
+  color: #ec6d6d;
+}
+
+.title:hover,
+.content:hover,
+.content:active,
+.title:active,
+.title:focus,
+.content:focus {
+  outline: solid 3px #ec6d6d !important;
+  -webkit-appearance: none;
+  box-shadow: solid 1px #ec6d6d !important;
+}

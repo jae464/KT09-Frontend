@@ -18,108 +18,10 @@
 		<script src="apis.js"></script>
 		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/header.css" />
-		<style>
-			
-			.form-container {
-				margin: 4rem auto;
-				background-color: white;
-				padding: 2rem;
-				width: 40rem;
-			}
-			.form-container label {
-				font-size: 1.2rem;
-			}
-			.form-container .title-container {
-				width: 100%;
-				border: 1px solid black;
-				height: 2.5rem;
-				margin-left: 2rem;
-			}
-			.form-container #content {
-				width: 100%;
-			}
-			input {
-				border: none;
-				width: 100%;
-			}
-			.content {
-				height: 25rem;
-				width: 100%;
-				padding: 0;
-				margin-top: 2rem;
-				border: none;
-				border-bottom: 1px solid rgb(233, 236, 239);
-				resize: none;
-			}
-			.title {
-				height: 4rem;
-				font-size: 2.2rem;
-				line-height: 1.5;
-				font-weight: bold;
-				padding: 0px;
-				border-bottom: 1px solid rgb(233, 236, 239);
-			}
-			.category {
-				margin-top: 2rem;
-				padding-bottom: 1rem;
-				border-bottom: 1px solid rgb(233, 236, 239);
-			}
-			.category-title {
-				font-size: 1rem;
-				font-weight: bold;
-				margin-left: 0.1rem;
-			}
-			.category-select {
-				display: flex;
-				flex-direction: row;
-			}
-			.form-select {
-				width: 10rem;
-				margin-right: 2rem;
-			}
-			.tag {
-				height: 2rem;
-				font-size: 1rem;
-				line-height: 1.5;
-				font-weight: bold;
-				padding: 1.3rem 0;
-				border-bottom: 1px solid rgb(233, 236, 239);
-			}
-			.anonymous {
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
-				margin-top: 1rem;
-				align-items: center;
-				text-align: center;
-				padding-bottom: 1rem;
-				border-bottom: 1px solid rgb(233, 236, 239);
-			}
-			.anonymous-check {
-				width: auto;
-				margin-left: 1rem;
-				padding-left: 1rem;
-			}
-			.button-area {
-				display: flex;
-				margin-top: 2rem;
-				justify-content: space-between;
-			}
-			.button-area button {
-				height: 35px;
-				width: 6rem;
-				border: none;
-				border-radius: 4px;
-				cursor: pointer;
-			}
-			.submit {
-				background: rgb(18, 184, 134);
-				color: white;
-			}
-		</style>
+		<link rel="stylesheet" href="css/postStyle.css" />
+		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<!-- 헤더 -->
 		<!-- 헤더 -->
 		<nav class="navbar navbar-light bg-light">
 			<div class="navbar-top">
@@ -166,7 +68,9 @@
 		</nav>
 		<!-- 질문 폼 -->
 		<form class="form-container">
-			<input class="title" placeholder="질문을 입력하세요." />
+			<input class="title" placeholder="질문을 입력하세요" />
+			
+			<textarea placeholder="질문 내용을 입력하세요" class="content"></textarea>
 			<div class="category">
 				<p class="category-title">카테고리 설정</p>
 				<div class="category-select"></div>
@@ -176,17 +80,16 @@
 				type="text"
 				placeholder="태그를 입력하세요. 예시: #안녕 #하세요"
 			/>
-			<textarea placeholder="질문 내용을 입력하세요" class="content"></textarea>
 			<div class="anonymous">
 				<span style="font-weight: bold">익명 여부</span>
 				<input
-					class="anonymous-check"
+					class="anonymous-check radio-btn"
 					type="radio"
 					name="chk_info"
 					value="true"
 				/><span style="margin-left: 1rem">예</span>
 				<input
-					class="anonymous-check"
+					class="anonymous-check radio-btn"
 					type="radio"
 					name="chk_info"
 					value="false"
