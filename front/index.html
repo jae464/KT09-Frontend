@@ -29,8 +29,9 @@
           ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
         /></a>
 				<form class="d-flex">
-					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline search-btn" type="submit">Search</button>
+					<input class="search-box search" style="padding-left: 20px;"type="search" placeholder="Search " aria-label="Search">
+					<i class="fa-solid fa-magnifying-glass search-icon search-btn" type="submit"></i>
+					<!-- <button class="btn btn-outline search-btn" type="submit">Search</button> -->
 				</form>
 				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
 					<div class="dropdown">
@@ -72,7 +73,7 @@
 		<div class="container-fluid main-box">
 			<div class="row justify-content-around">
 				<!--1:6:1 10 -> 2 6 2느낌으로 나누고 처음 1은 이미 정해짐-->
-				<div class="col-2 b">
+				<!-- <div class="col-2 b">
 					<p>카테고리</p>
 					<div class="side-nav">
 					<p class="all-click" style="cursor: pointer">전체</p>
@@ -85,8 +86,8 @@
 					<i class="fa-solid fa-angle-down rotate2 common-click"></i>
 					<ul class="common"></ul>
 					</div>
-				</div>
-				<div class="col-8">
+				</div> -->
+				<div class="col-10">
 					
 					<div class="row justify-content-around card-box">
 						<div class="col-md link" OnClick="location.href ='http://kate.kt.com'" style="background-color: #3FBDB9; cursor:pointer;">
@@ -127,42 +128,53 @@
 									<li class="question-type-box question3">
 										<h2 class="question-type-box">미해결 질문</h2>
 									</li>
-									<li class="question-type-box question4">
-										<h2 class="question-type-box">최근 올라온 질문</h2>
-									</li>
 								</ul>
 							</div>
 	
 							<div class="liked-contents">
 								<section class="liked-section">
-							
 										<ol class="posts top-like"></ol>
-							
-							
 								</section>
 	
 								<section class="recommend-section">
-							
 										<ol class="posts top-view"></ol>
-						
-							
-	
 								</section>
 	
 								<section class="unSolved-section">
-								
-						
-							
+									<ol class="posts unsolved"></ol>
 								</section>
 
-								<section class="recent-section">
-					
-										<ol class="posts recent"></ol>
-				
-								</section>
-	
+								<!-- <section class="recent-section">
+									<ol class="posts recent"></ol>
+								</section> -->
 							</div>
-	
+								
+						</div>
+						<hr class="line"/>			
+						<div class="show-box">
+							
+							<div class="show-category">
+								
+								<div class="part-nav">
+									<p >카테고리</p>
+									<div class="part-nav-side">
+									<p class="all-click" style="cursor: pointer">전체</p>
+									<span class="menu-header part-click">부문별</span>
+									<i class="fa-solid fa-angle-down rotate1 part-click"></i>
+								</div>
+								<div class="part-nav-side">
+									<ul class="part"></ul>
+									<span class="common-click menu-header">공통</span>
+									<i class="fa-solid fa-angle-down rotate2 common-click"></i>
+									<ul class="common"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="show-post">
+								
+								<p>최근 올라온 질문</p>
+								<ol class="posts recent"></ol>
+							</div>
 						</div>
 					<!-- <div class="container">
 						<div class="row justify-content-around" style="margin-bottom: 10px;">

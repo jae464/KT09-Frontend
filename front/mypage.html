@@ -18,93 +18,7 @@
 		<script src="setUser.js"></script>
 		<script src="category.js"></script>
 		<link rel="stylesheet" href="css/header.css" />
-		<style>
-            .profile-image {
-				width: 48px;
-				height: 48px;
-				border-radius: 50%;
-			}
-			
-			.container-fluid {
-				/* border: 1px solid black; */
-			}
-			.my-info {
-				width: 80%;
-				/* border: 1px solid black; */
-				margin: 4rem auto;
-				background-color: white;
-				padding: 4rem;
-			}
-			.profile {
-				display: flex;
-				justify-content: center;
-				flex-direction: column;
-				align-items: center;
-				margin-right: 2rem;
-				border-right: 1px solid rgb(233, 236, 239);
-			}
-			.big-profile-image {
-				width: 128px;
-				height: 128px;
-				object-fit: cover;
-				border-radius: 50%;
-				margin: 0 auto;
-			}
-			.profile-nickname {
-				font-weight: bold;
-				margin-top: 1rem;
-			}
-			.profile-content {
-				display: flex;
-				flex-direction: column;
-				font-weight: bold;
-				font-size: 1rem;
-				line-height: 2.3rem;
-			}
-			.my-posts {
-				cursor: pointer;
-			}
-			.my-comments {
-				cursor: pointer;
-			}
-			.hashtags-form {
-				align-items: center;
-			}
-			.hashtag-add {
-				width: 8rem;
-				height: 2rem;
-			}
-			.hashtag-add-btn {
-				border: none;
-				font-size: 1rem;
-				height: 2rem;
-				width: 4rem;
-				margin-left: 1rem;
-
-				border-radius: 4px;
-				text-align: center;
-				background-color: antiquewhite;
-			}
-			.hashtag {
-				font-weight: lighter;
-				font-size: 1rem;
-				color: blue;
-				cursor: pointer;
-			}
-			.board-title {
-				padding: 0.8rem;
-				text-align: center;
-				color: gray;
-				border: 1px solid rgb(233, 236, 239);
-			}
-			.board-content {
-				padding: 0.4rem;
-				border-bottom: 1px solid rgb(233, 236, 239);
-				color: gray;
-				cursor: pointer;
-				padding-left: 2rem;
-			}
-		</style>
+		<link rel="stylesheet" href="css/mypageStyle.css" />
 	</head>
 	<body>
 		<!-- 헤더 -->
@@ -114,10 +28,11 @@
 				<a class="navbar-brand" href="index.html"
           ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
         /></a>
-				<form class="d-flex">
-					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline search-btn" type="submit">Search</button>
-				</form>
+		<form class="d-flex">
+			<input class="search-box search" style="padding-left: 20px;"type="search" placeholder="Search " aria-label="Search">
+			<i class="fa-solid fa-magnifying-glass search-icon search-btn" type="submit"></i>
+			<!-- <button class="btn btn-outline search-btn" type="submit">Search</button> -->
+		</form>		
 				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
 					<div class="dropdown">
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

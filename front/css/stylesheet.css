@@ -26,6 +26,15 @@ body {
   transition: 0.2s ease-in-out;
 }
 
+.right-side {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: -25;
+  float: right;
+  margin-left: auto;
+  margin-right: 1rem;
+}
 .navbar .navbar-collapse .navbar-nav .nav-item a.active {
   font-weight: 700;
   border-bottom: solid 5px #ec6d6d;
@@ -115,8 +124,7 @@ body {
 
 /*website body*/
 .main-box {
-  padding: 15px 15%;
-  background-color: #eeeeee;
+  padding: 15px 20%;
 }
 
 /*-------카테고리 --------*/
@@ -154,6 +162,9 @@ body {
   color: #ec6d6d;
 }
 
+.part li > a {
+  color: #ec6d6d;
+}
 .category,
 .part-click,
 .common-click {
@@ -161,6 +172,9 @@ body {
   font-size: 14px;
 }
 
+.menu-header {
+  font-size: 16px;
+}
 .side-nav i {
   float: right;
 }
@@ -269,11 +283,13 @@ body {
 }
 
 /*메인 클릭 박스 */
+.container {
+  box-shadow: 0px 5px 10px #b6b6b6;
+}
 .main-question-box {
   width: 100%;
   height: fit-content;
   background-color: white;
-  border-radius: 20px;
   font-size: 16px;
 }
 .radio-hide {
@@ -283,7 +299,6 @@ body {
   position: relative;
   width: 100%;
   height: 50px;
-  margin: 40px auto;
 }
 
 ul.dNav {
@@ -296,7 +311,7 @@ ul.dNav {
 
 ul.dNav li {
   float: left;
-  width: 25%;
+  width: 33.3%;
   text-align: center;
   cursor: pointer;
   font-size: 16px;
@@ -306,14 +321,6 @@ ul.dNav li {
   opacity: 0.5;
   list-style: none;
   background-color: #c4c4c4;
-}
-
-ul.dNav li:first-child {
-  border-top-left-radius: 20px;
-}
-
-ul.dNav li:last-child {
-  border-top-right-radius: 20px;
 }
 
 ul.dNav li::after {
@@ -327,17 +334,8 @@ ul.dNav li::after {
 
 .liked:checked ~ .question-list-box .dNav li.question1,
 .recommend:checked ~ .question-list-box .dNav li.question2,
-.unSolved:checked ~ .question-list-box .dNav li.question3,
-.recent:checked ~ .question-list-box .dNav li.question4 {
+.unSolved:checked ~ .question-list-box .dNav li.question3 {
   background-color: rgba(224, 84, 44, 0.2);
-}
-
-.liked:checked ~ .question-list-box .dNav li.question1 {
-  border-top-left-radius: 20px;
-}
-
-.recent:checked ~ .question-list-box .dNav li.question4 {
-  border-top-right-radius: 20px;
 }
 
 ul.dNav li .question-type-box {
@@ -358,14 +356,13 @@ ul.dNav li:hover {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-  height: 15rem;
+  margin-top: 40px;
+  height: 12rem;
 }
 
 .liked-section,
 .recommend-section,
-.unSolved-section,
-.recent-section {
+.unSolved-section {
   width: 90%;
   margin: auto;
   padding: 4 0px;
@@ -374,8 +371,7 @@ ul.dNav li:hover {
 
 .liked-section,
 .recommend-section,
-.unSolved-section,
-.recent-section {
+.unSolved-section {
   transform: scale(0);
   transform-origin: center bottom;
   position: absolute;
@@ -384,12 +380,7 @@ ul.dNav li:hover {
 
 .liked:checked ~ .liked-contents .liked-section,
 .recommend:checked ~ .liked-contents .recommend-section,
-.unSolved:checked
-  ~ .liked-contents
-  .unSolved-section
-  .recent:checked
-  ~ .liked-contents
-  .recent-section {
+.unSolved:checked ~ .liked-contents .unSolved-section {
   display: block;
   transform: scale(1);
   transform-origin: bottom;
@@ -405,6 +396,37 @@ ul.dNav li:hover {
 
 section ul {
   padding-left: 20px;
+}
+
+.show-box {
+  display: flex;
+  height: fit-content;
+  background-color: white;
+  padding: 0 40px;
+}
+
+.show-category {
+  display: flex;
+  background-color: white;
+  width: 40%;
+  float: left;
+}
+
+.part-nav {
+  padding: 20px 0;
+}
+
+.show-post {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 80%;
+  float: left;
+}
+.show-post p {
+  padding-top: 2rem;
+  font-size: 1.5rem;
 }
 /*반응형*/
 
@@ -440,4 +462,9 @@ section ul {
   .link h2 {
     font-size: 0.7rem;
   }
+}
+
+.line {
+  margin: 0;
+  width: 100%;
 }
