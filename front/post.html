@@ -16,163 +16,13 @@
 		<script src="setUser.js"></script>
 		<script src="apis.js"></script>
 		<link rel="stylesheet" href="css/header.css" />
+		<link rel="stylesheet" href="css/postStyle.css" />
+		
 		<script
 			src="https://kit.fontawesome.com/0526cc06e5.js"
 			crossorigin="anonymous"
 		></script>
 		<title>Document</title>
-		<style>
-			.profile-image {
-				width: 48px;
-				height: 48px;
-				border-radius: 50%;
-			}
-			
-			
-			.top-box {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-			.solved-text {
-				color: green;
-				font-weight: bold;
-			}
-			.category {
-				margin-top: 0.3rem;
-				text-align: center;
-			}
-			.delete-btn {
-				border: none;
-				border-radius: 4px;
-				background-color: #6cacf2;
-				color: white;
-			}
-			.contents {
-				width: 50rem;
-				padding: 1rem;
-				background-color: white;
-				margin: 4rem auto;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				border: none;
-				border-radius: 1rem;
-			}
-			.like-box {
-				display: flex;
-				align-items: center;
-				text-align: center;
-				/* justify-content: space-between; */
-			}
-			.title {
-				display: flex;
-				font-weight: bold;
-				font-size: 2.5rem;
-			}
-			.comment {
-				border: 1px solid #e5e5e5;
-				padding: 1rem;
-			}
-			.like-btn {
-				border: none;
-				/* border-radius: 4px;
-				background-color: #6cacf2;
-				color: white; */
-				align-items: center;
-				padding-bottom: 1rem;
-				margin-left: 0.5rem;
-				cursor: pointer;
-			}
-			.report {
-				margin-left: 1rem;
-			}
-			.report-btn {
-				padding-bottom: 1rem;
-				margin-left: 0.5rem;
-				cursor: pointer;
-			}
-			.content {
-				font-size: 1.2rem;
-			}
-			.hashtag {
-				margin-right: 1rem;
-				color: #3867e8;
-				cursor: pointer;
-			}
-			.post-info {
-				font-size: 1rem;
-				margin: 1rem 0;
-				color: gray;
-			}
-			.nickname {
-				margin-right: 1rem;
-			}
-			.answer-btn {
-				width: 6rem;
-				height: 3rem;
-				border: none;
-				margin-bottom: 1rem;
-				background-color: #6cacf2;
-				color: white;
-				border-radius: 4px;
-			}
-			.solve-btn {
-				width: 6rem;
-				height: 3rem;
-				border: none;
-				margin-bottom: 1rem;
-				background-color: #6cacf2;
-				color: white;
-				border-radius: 4px;
-			}
-			.answer {
-				height: 20rem;
-				border: 1px solid #e5e5e5;
-				resize: none;
-			}
-			.answer-submit {
-				width: 6rem;
-				height: 3rem;
-				border: none;
-				margin-bottom: 1rem;
-				background-color: #6cacf2;
-				color: white;
-				border-radius: 4px;
-			}
-			.user-name {
-				font-weight: bold;
-				margin-left: 1rem;
-				font-size: 1.2rem;
-			}
-			.comment-date {
-				color: gray;
-				font-size: 0.8rem;
-			}
-			.comment-like {
-				float: right;
-				margin-left: 1rem;
-			}
-			.comment_like_btn {
-				float: right;
-				margin-left: 0.5rem;
-			}
-			.comment-report {
-				float: right;
-				margin-left: 1rem;
-			}
-			.comment-delete {
-				float: right;
-				margin-left: 1rem;
-				cursor: pointer;
-				background-color: #6cacf2;
-				padding: 3px;
-				color: white;
-				border-radius: 4px;
-				font-size: 0.8rem;
-				text-align: center;
-			}
-		</style>
 		<!-- 정적 페이지에서 주소창으로 paraemter 넘겨받는 법 -->
 		<script type="text/javascript">
 			var Request = function () {
@@ -208,10 +58,11 @@
 				<a class="navbar-brand" href="index.html"
           ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
         /></a>
-				<form class="d-flex">
-					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline search-btn" type="submit">Search</button>
-				</form>
+		<form class="d-flex">
+			<input class="search-box search" style="padding-left: 20px;"type="search" placeholder="Search " aria-label="Search">
+			<i class="fa-solid fa-magnifying-glass search-icon search-btn" type="submit"></i>
+			<!-- <button class="btn btn-outline search-btn" type="submit">Search</button> -->
+		</form>
 				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
 					<div class="dropdown">
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -253,6 +104,7 @@
 					<p class="category"></p>
 					<button class="delete-btn">삭제</button>
 				</div>
+
 				<p class="solved"></p>
 				<h1 class="title"></h1>
 				<div class="like-box">
@@ -261,13 +113,12 @@
 					<p class="report"></p>
 					<span class="report-btn">😡</span>
 				</div>
-				<hr />
-
+				<hr/>
 				<p class="content"></p>
 
 				<div class="hashtags"></div>
 				<div class="post-info"></div>
-				<hr />
+				<hr/>
 				<button class="answer-btn">답변하기</button>
 				<button class="solve-btn">해결완료</button>
 				<div class="answer-form">
@@ -290,7 +141,7 @@
 					<textarea class="answer" style="width: 100%"></textarea>
 					<button class="answer-submit">답변 등록</button>
 				</div>
-				<hr />
+			
 				<div class="comments"></div>
 			</div>
 		</div>
@@ -320,7 +171,7 @@
 
 				$('.category').html(`카테고리 > ${post.category}`);
 				// $('.title').html(`Q. ${post.title}`);
-				$('.title').append(`<span style="margin-right:1rem;">Q</span>`);
+				$('.title').append(`<span style="margin-right:0.5rem; font-size: 2.5rem; color: #e0542c;">Q</span>`);
 				$('.title').append($(`<h1>${post.title}<h1/>`));
 				$('.like').html(`좋아요 : ${post.like}`);
 				$('.report').html(`신고횟수 : ${post.report}`);

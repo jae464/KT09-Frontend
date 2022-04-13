@@ -18,6 +18,7 @@
 		<script src="setUser.js"></script>
 		<script src="category.js"></script>
 		<link rel="stylesheet" href="css/stylesheet.css" />
+		<link rel="stylesheet" href="css/header.css" />
 		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -28,8 +29,9 @@
           ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
         /></a>
 				<form class="d-flex">
-					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline search-btn" type="submit">Search</button>
+					<input class="search-box search" style="padding-left: 20px;"type="search" placeholder="Search " aria-label="Search">
+					<i class="fa-solid fa-magnifying-glass search-icon search-btn" type="submit"></i>
+					<!-- <button class="btn btn-outline search-btn" type="submit">Search</button> -->
 				</form>
 				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
 					<div class="dropdown">
@@ -68,10 +70,10 @@
 
 
 		<!-- <div class="card-list"></div> -->
-		<div class="container-fluid main-box" style="background-color: #DDDDDD;">
+		<div class="container-fluid main-box">
 			<div class="row justify-content-around">
 				<!--1:6:1 10 -> 2 6 2느낌으로 나누고 처음 1은 이미 정해짐-->
-				<div class="col-2 b">
+				<!-- <div class="col-2 b">
 					<p>카테고리</p>
 					<div class="side-nav">
 					<p class="all-click" style="cursor: pointer">전체</p>
@@ -84,54 +86,123 @@
 					<i class="fa-solid fa-angle-down rotate2 common-click"></i>
 					<ul class="common"></ul>
 					</div>
-				</div>
-				<div class="col-7">
+				</div> -->
+				<div class="col-10">
+					
 					<div class="row justify-content-around card-box">
-						<div class="col-md link shadow-sm" style="background-color: #3FBDB9;">
+						<div class="col-md link" OnClick="location.href ='http://kate.kt.com'" style="background-color: #3FBDB9; cursor:pointer;">
 							<div class="text-box">
-							<h2>기본 업무 처리할 때는?</h2><br>
-							<a href="http://kate.kt.com">KATE</a>
-						</div>
-						</div>
-						<div class="col-md link shadow-sm" style="background-color: #E0542C;">
-							<div class="text-box">
-							<h2>IT 프로세스 도움이 필요할 때는?</h2><br>
-							<a href="http://kate.kt.com">IT's PORTAL</a>
+								<h2>기본 업무 처리할 때는?</h2><br>
+								<p>KATE</p>
 							</div>
 						</div>
-						<div class="col-md link shadow-sm" style="background-color: #EC6D6D;">
-							<div class="text-box">
-							<h2>지식을 쌓고 싶을 때는?</h2><br>
-							<a href="https://ktedu.kt.com/main/portalMain.do">GENIUS</a>
+						<div class="col-md link" OnClick="location.href ='http://it.kt.co.kr/'" style="background-color: #E0542C; cursor:pointer;">
+							<div class="text-box" >
+								<h2>IT 프로세스 도움이 필요할 때는?</h2><br>
+								<p>IT's PORTAL</p>
+							</div>
 						</div>
+						<div class="col-md link" OnClick="location.href ='https://ktedu.kt.com/main/portalMain.do'" style="background-color: #EC6D6D; cursor:pointer;">
+							<div class="text-box">
+								<h2>지식을 쌓고 싶을 때는?</h2><br>
+								<p>GENIUS</p>
+							</div>
 						</div>
 					</div>
-					<div class="container">
+
+					
+					<div class="container" id="service">
+						<div class="main-question-box">
+							<input type="radio" class="liked radio-hide " checked id="" name="development-detail">
+							<input type="radio" class="recommend radio-hide " id="" name="development-detail">
+							<input type="radio" class="unSolved radio-hide " id="" name="development-detail">
+							<input type="radio" class="recent radio-hide " id="" name="development-detail">
+							<div class="question-list-box">
+								<ul class="dNav">
+									<li class="question-type-box question1 open">
+										<h2 class="question-type-box">좋아요 TOP 5</h2>
+									</li>
+									<li class="question-type-box question2">
+										<h2 class="question-type-box">추천 게시글</h2>
+									</li>
+									<li class="question-type-box question3">
+										<h2 class="question-type-box">미해결 질문</h2>
+									</li>
+								</ul>
+							</div>
+	
+							<div class="liked-contents">
+								<section class="liked-section">
+										<ol class="posts top-like"></ol>
+								</section>
+	
+								<section class="recommend-section">
+										<ol class="posts top-view"></ol>
+								</section>
+	
+								<section class="unSolved-section">
+									<ol class="posts unsolved"></ol>
+								</section>
+
+								<!-- <section class="recent-section">
+									<ol class="posts recent"></ol>
+								</section> -->
+							</div>
+								
+						</div>
+						<hr class="line"/>			
+						<div class="show-box">
+							
+							<div class="show-category">
+								
+								<div class="part-nav">
+									<p >카테고리</p>
+									<div class="part-nav-side">
+									<p class="all-click" style="cursor: pointer">전체</p>
+									<span class="menu-header part-click">부문별</span>
+									<i class="fa-solid fa-angle-down rotate1 part-click"></i>
+								</div>
+								<div class="part-nav-side">
+									<ul class="part"></ul>
+									<span class="common-click menu-header">공통</span>
+									<i class="fa-solid fa-angle-down rotate2 common-click"></i>
+									<ul class="common"></ul>
+									</div>
+								</div>
+							</div>
+							<div class="show-post">
+								
+								<p>최근 올라온 질문</p>
+								<ol class="posts recent"></ol>
+							</div>
+						</div>
+					<!-- <div class="container">
 						<div class="row justify-content-around" style="margin-bottom: 10px;">
-						  <div class="col-md card shadow-sm">
+						  <div class="col-md card">
 							<p>좋아요 TOP 5</p>
 							<ol class="posts top-like"></ol>
 						  </div>
-						  <div class="col-md card shadow-sm">
+						  <div class="col-md card">
 							<p>나를 위한 추천 게시글</p>
 							<ol class="posts top-view"></ol>
 						  </div>
 						</div>
 						<div class="row justify-content-around">
-						  <div class="col-md card shadow-sm">
+						  <div class="col-md card">
 							  <p>미해결 질문</p>
 								<ol class="posts unsolved"></ol>
 							</div>
-						  <div class="col-md card shadow-sm">
+						  <div class="col-md card">
 							<p>최근 올라온 질문</p>
 							<ol class="posts recent"></ol>
 						  </div>
 						</div>
-					  </div>
+					  </div> -->
 				</div>
-				<div class="col-2 b" style="background-color: white; margin: 10px">
-					<p class="myinfo">내정보</p>
-				</div>
+				
+			</div>
+			<div class="col-2 b" style="background-color: white; margin: 10px">
+				<p class="myinfo">내정보</p>
 			</div>
 		</div>
 		
@@ -187,6 +258,39 @@
 							"transform": "rotate(180deg)" 
 					});
 				});
+				//박스 오픈
+  				$(".question1").click(function () {
+    				$(".liked").prop("checked", true);
+  				})
+
+  				$(".question2").click(function () {
+    				$(".recommend").prop("checked", true);
+  				})
+
+  				$(".type-box").click(function () {
+   				 	$(this).addClass("active").siblings().removeClass("active")
+  				})
+
+  				$(".question1").click(function () {
+    				$(".liked").prop("checked", true);
+  				})
+
+  				$(".question2").click(function () {
+    				$(".recommend").prop("checked", true);
+  				})
+
+  				$(".question3").click(function () {
+   					$(".unSolved").prop("checked", true);
+ 				 })
+
+  				$(".question4").click(function () {
+    				$(".recent").prop("checked", true);
+  				})
+
+  				$(".question-type-box").click(function () {
+    				$(this).addClass("open").siblings().removeClass("open")
+  				})
+
 
 				// 분야별 게시글 세팅
 				function setPosts(category) {

@@ -19,71 +19,7 @@
 		<script src="category.js"></script>
 		<link rel="stylesheet" href="css/header.css" />
 		<script src="https://kit.fontawesome.com/0526cc06e5.js" crossorigin="anonymous"></script>
-		<style>
-			
-			.main-container {
-				border: 1px solid rgb(233, 236, 239);
-			}
-			
-			.profile-image {
-				width: 48px;
-				height: 48px;
-				border-radius: 50%;
-			}
-			.part-box {
-				align-items: center;
-
-				border: 1px dashed black;
-				background-color: bisque;
-				justify-content: center;
-			}
-			.part {
-				text-align: center;
-			}
-			.common {
-				text-align: center;
-			}
-			.part-contents {
-				box-sizing: border-box;
-				border-left: 1px dashed black;
-				background-color: white;
-				line-height: 1.8;
-				height: 100%;
-			}
-			.common-box {
-				align-items: center;
-				background-color: bisque;
-				border: 1px dashed black;
-				border-top: none;
-			}
-			.common-contents {
-				padding: 1rem;
-				border-left: 1px dashed black;
-				background-color: white;
-			}
-			.content {
-				margin-right: 0.5rem;
-				color: gray;
-				cursor: pointer;
-			}
-			.common-content {
-				margin-right: 0.5rem;
-				color: gray;
-				cursor: pointer;
-			}
-			.board-title {
-				padding: 0.8rem;
-				text-align: center;
-				color: gray;
-				border: 1px solid rgb(233, 236, 239);
-			}
-			.board-content {
-				padding: 0.4rem;
-				border-bottom: 1px solid rgb(233, 236, 239);
-				color: gray;
-				cursor: pointer;
-			}
-		</style>
+		<link rel="stylesheet" href="css/answerStyle.css" />
 	</head>
 	<body>
 		<!-- 헤더 -->
@@ -92,10 +28,11 @@
 				<a class="navbar-brand" href="index.html"
           ><img src="images/01_KT Wordmark (Standard)_01.png" alt="KT"
         /></a>
-				<form class="d-flex">
-					<input class="search-box search" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline search-btn" type="submit">Search</button>
-				</form>
+		<form class="d-flex">
+			<input class="search-box search" style="padding-left: 20px;"type="search" placeholder="Search " aria-label="Search">
+			<i class="fa-solid fa-magnifying-glass search-icon search-btn" type="submit"></i>
+			<!-- <button class="btn btn-outline search-btn" type="submit">Search</button> -->
+		</form>
 				<img class="profile-image" src="" alt="" style="margin-left: auto;margin-right: 1rem;">
 					<div class="dropdown">
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -131,7 +68,7 @@
 			</div>
 		</nav>
 		<!-- 내용 -->
-		<div class="row" style="background-color: rgb(233, 236, 239)">
+		<div class="row">
 			<div class="col"></div>
 			<div
 				class="col-7 gy-5 px-5 main-container"
@@ -254,7 +191,6 @@
 							return post.solved;
 						});
 					}
-					posts = posts.slice(0,10);
 					// var unsolved_posts = posts.filter((post) => {
 					// 	return !post.solved;
 					// });
